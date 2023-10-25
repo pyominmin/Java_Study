@@ -1,0 +1,35 @@
+for문
+for(초기값; 조건; 증가/감소값){
+  명령문;
+}
+
+ex. 1부터 100까지 출력하시오
+
+public class GitHub_for {
+
+	public static void main(String[] args) {
+		
+		for(int i = 1; i <= 100; i++) {
+		System.out.printf("%4d", i);
+		}
+	}  
+
+for문을 이용한 예시
+1.
+public class GitHub_for {
+
+	public static void main(String[] args) {
+		
+		for(int i = 10; i >=0; i--) {
+		System.out.printf("%-5d", i);//5자리 공간 확보 후 왼쪽(-)부터 기록
+		}
+    System.out.println("\n\ni = " + i);
+	}  
+
+2.
+
+
+
+
+
+
