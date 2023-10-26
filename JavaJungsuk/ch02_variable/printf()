@@ -1,0 +1,8 @@
+%b : 불리언(boolean) 형식으로 출력
+%d : 10진(decimal) 정수의 형식으로 출력
+%o : 8진(octal) 정수의 형식으로 출력
+%x : 16진(hexa) 정수의 형식으로 출력
+%f : 부동 소수점(floating=point)의 형식으로 출력
+%e : 지수(exponent) 표현식의 형식으로 출력
+%c : 문자(character)로 출력
+%s : 문자열(string)로 출력
