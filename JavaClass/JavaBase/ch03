@@ -1,0 +1,27 @@
+문자열 입출력(Scanner)
+
+1. 문자 출력
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		char ch;
+		System.out.print("문자 입력 : ");
+		ch = in.nextLine().charAt(0);//문자열로 받아오고 그중에서 0번째 가져오겠다.
+		in.close();
+		System.out.println("입력 문자 : " + ch);
+	}
+
+2. 시간
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		int time;
+		System.out.print("분 입력 : ");
+		time = in.nextInt();
+		in.close();
+		int hour = time / 60;
+		int min = time % 60;
+		
+		
+		System.out.printf("%d분은 %d시간 %d분 입니다.", time, hour, min);
+	}
