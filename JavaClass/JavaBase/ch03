@@ -26,12 +26,21 @@ public static void main(String[] args) {
 		System.out.printf("%d분은 %d시간 %d분 입니다.", time, hour, min);
 	}
 
-3. 일시적으로 형 변환
+3. 일시적으로 형 변환 (double)
 public static void main(String[] args) {
 
 		int a = 10;
 		int b = 3;
 		double re;
-		re = (double)a / b;
+		re = (double)a / b; //일시적인 자료형 변환/ (double)(a / b) 하는 경우에는 결과 값에 형변환이되어 re = 3.0 많이 틀리는 부분
 		System.out.println("re = " + re);
 	}
+
+3-1. 정수부로 형변환
+
+double d = 3.54;
+		System.out.println("정수부 : " + (int)d);
+
+
+
+
