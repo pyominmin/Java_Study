@@ -19,3 +19,17 @@ j = i++;
 
 *조건 연산자 ?:
 조건식? 식1: 식2;//조건식이 참이면 식1, 아니면 식2
+
+Scanner in = new Scanner(System.in);
+		int n1, n2;
+		System.out.print("두 수 입력 : ");
+		n1 = in.nextInt();
+		n2 = in.nextInt();
+		in.close();
+
+		int large = n1 > n2 ? n1 : n2;
+		int small = n1 > n2 ? n2 : n1;
+		System.out.println("두 수 중 큰 수는 " + large + "이고 작은 수는 " + small + "입니다.");
+	}
+
+
