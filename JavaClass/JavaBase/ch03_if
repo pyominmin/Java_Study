@@ -1,0 +1,45 @@
+제어 명령문 => 조건문(if, switch), 반복문(for, while, do ~ while)
+
+  *if문
+
+  1. 음의 정수를 양의 정수로 변환
+  public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int num;
+		System.out.print("정수 입력 : ");
+		num = in.nextInt();
+		in.close();
+		
+		if(num < 0) {
+			num *= -1;
+		}
+		
+		System.out.println("결과는 " + num + "입니다.\n");
+	}
+
+2. 소문자를 대문자로 변환
+  char(2byte) - int(4byte) - double(8byte)
+  public static void main(String[] args) {
+		
+		
+		Scanner in = new Scanner(System.in);
+		char ch;
+		System.out.print(" 문자 입력 : ");
+		ch = in.nextLine().charAt(0);
+		in.close();
+			
+		if(ch >= 'a' && ch <= 'z') {//범위값을 표현할때는 무조건 &&(and)
+			//ch = (char)(ch - 32);// 정수 연산에서는 무조건 제일 큰타입으로 계산되어서 정수 값으로 계산해야 하지만 결과 값은 문자이므로 정수를 문자로 바꿔서 넣는다.
+      ch -= 32; //복합되어 있는 연산자는 묵시적으로 좌측에 있는 타입으로 변경됨
+			System.out.println("소문자를 대문자로 변환합니다.");
+		}
+		
+		System.out.println("결과는 " + ch + "입니다.\n");
+	}
+
+}
+
+
+
+
