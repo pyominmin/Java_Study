@@ -32,4 +32,22 @@
 		
 	}
 
-2. 
+2. 입장 가능
+public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int age, skill;
+		System.out.print("나이 : ");
+		age = in.nextInt();
+		
+		System.out.print("내공 : ");
+		skill = in.nextInt();
+		in.close();
+
+		if (age >= 18 && skill >= 1400 && skill <= 1600) {
+			System.out.println("입장 가능");
+		} else {
+			System.out.println("입장 불가능");
+		}
+
+	}
