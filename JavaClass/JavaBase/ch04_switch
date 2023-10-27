@@ -85,7 +85,7 @@ public static void main(String[] args) {
 public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		System.out.print("주민등록번호 입력(형식 : 020321-1234567) : ");
-		char number = in.nextLine().charAt(7);
+		char number = in.nextLine().charAt(7); //한번만 문자를 찾아낼 수 있다.
 		in.close();
 		
 		switch(number) {
@@ -100,3 +100,33 @@ public static void main(String[] args) {
 		}
 		
 	} 
+
+5. 여러개의 글자를 찾고 싶은 경우
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("주민등록번호 입력(형식 : 020321-1234567) : ");
+
+		String number; //
+		number = in.nextLine(); // 문자열을 입력 받아 number에 저장을 하고
+		char gender = number.charAt(7);// 7번째 문자를 추출
+		char sign = number.charAt(7);// 6번쨰 문자를 추출
+		in.close();
+
+		if (sign == '-' && number.length() == 14) {//length : 문자열의 길이를 구해주는 메서드
+			switch (gender) {
+			case '2':
+			case '4':
+				System.out.println("여자입니다.");
+				break;
+			case '1':
+			case '3':
+				System.out.println("남자입니다.");
+				break;
+			default:
+				System.out.println("유효한 주민번호가 아닙니다.");
+			}
+		}else {
+			System.out.println("입력 오류입니다.");
+		}
+	}
+
