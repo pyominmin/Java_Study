@@ -1,0 +1,18 @@
+public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		
+		int num;
+		System.out.print("정수 입력 : ");
+		num = in.nextInt();
+		in.nextLine();//저장 목적이 아니라 buffer에서 enter까지 가지고 오겠다.
+		
+		char ch;
+		System.out.print("문자 입력 : ");
+		ch = in.nextLine().charAt(0);//nextLine이 enter까지 가져오기 때문에 문자 입력 후 정수 입력 시에는 문제가 없다.
+		
+		in.close();
+		
+		System.out.println("입력 문자 : " + ch + ", 입력 정수 : " + num);
+	}
+
