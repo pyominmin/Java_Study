@@ -112,7 +112,7 @@ public static void main(String[] args) {
 		char sign = number.charAt(7);// 6번쨰 문자를 추출
 		in.close();
 
-		if (sign == '-' && number.length() == 14) {//length : 문자열의 길이를 구해주는 메서드
+		if (number.length() == 14 && sign == '-' ) {//length : 문자열의 길이를 구해주는 메서드
 			switch (gender) {
 			case '2':
 			case '4':
