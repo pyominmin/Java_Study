@@ -103,7 +103,13 @@ public static void main(String[] args) {
 		int score = in.nextInt();
 		in.close();
 
-		String grade;
+		//조건문을 쓰는 경우 else 구문이 없으면 컴파일러는 조건에 걸리지 않는 경우가 발생할 수 있다.
+		//때문에 조건에 걸리지 않는 경우 변수의 초기값을 설정할 수 없기 때문에 오류를 발생 시키게 된다.
+
+		//해결방법 1. 변수에 초기값을 설정 후 if문을 else 구문 없이 쓸 수 있다.
+		//해결방법 2. else 구문을 마지막에 반드시 포함 시킨다.
+
+		String grade; //두 글자 이상(문자열)
 		if (score >= 90 && score <= 100) {
 			if (score >= 97) {
 				grade = "A+";
@@ -129,5 +135,22 @@ public static void main(String[] args) {
 	}
 }
 
+7. 배수
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int num = in.nextInt();
+		in.close();
 
+		if (num % 12 == 0) {
+			System.out.println(num + "은 3의 배수이면서 4의 배수입니다.");
+		} else if (num % 3 == 0) {
+			System.out.println(num + "은 3의 배수입니다.");
+		} else if (num % 4 == 0) {
+			System.out.println(num + "은 4의 배수입니다.");
+		} else {
+			System.out.println(num + "은 3의 배수도 4의 배수도 아닙니다.");
+		}
+
+	}
 
