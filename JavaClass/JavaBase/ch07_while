@@ -33,6 +33,7 @@ int i = 1;
 
 2. continue(반복문의 끝으로 이동한다.)
 //for문에서 continue를 이용하면 증가값으로 이동한다.
+//do ~ while문에서 사용하면 조건으로 이동하게된다.
 public static void main(String[] args) {
 		
 		int i = 1;
@@ -51,4 +52,40 @@ public static void main(String[] args) {
 		}//end while
 	}
 
-3. 
+3. 다시 입력받게 돌리기
+while문 이용
+public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int num;
+		while (true) {// 무한루프
+			System.out.print("정수 입력(1 ~ 5) : ");
+			// int num = in.nextInt();//블록 안에서 선언한 변수는 지역변수라 한다. 그러므로 블록 밖에서 변수 선언을 한다.
+			num = in.nextInt();
+
+			if (num >= 1 && num <= 5) {
+				break;
+			}
+		}
+
+		in.close();
+		System.out.println("입력 결과 : " + num);
+	}
+
+do~while문 이용
+public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int num;
+		do {// 무한루프
+			System.out.print("정수 입력(1 ~ 5) : ");
+			num = in.nextInt();
+
+		} while (num < 1 || num > 5);// 무한루프 //반복조건
+
+		in.close();
+		System.out.println("입력 결과 : " + num);
+
+	}
+
+4. 
