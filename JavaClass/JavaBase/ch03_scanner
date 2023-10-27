@@ -95,3 +95,39 @@ public static void main(String[] args) {
 		}
 
 	}
+
+6. 등급
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("점수 입력 : ");
+		int score = in.nextInt();
+		in.close();
+
+		String grade;
+		if (score >= 90 && score <= 100) {
+			if (score >= 97) {
+				grade = "A+";
+			}else if (score < 97 && score >= 93) {
+				grade = "A0";
+			}else {
+				grade = "A-";
+			}
+		}else if (score >= 80 && score < 90) {
+			if (score >= 87) {
+				grade = "B+";
+			}else if (score < 87 && score >= 83) {
+				grade = "B0";
+			}else {
+				grade = "B-";
+			}
+
+		}else {
+			grade = "F";
+		}
+
+		System.out.printf("당신의 학점은 %s 입니다.\n", grade);
+	}
+}
+
+
+
