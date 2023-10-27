@@ -31,6 +31,11 @@ int i = 1;
 		}//end while
 	}
 
+1-2 for문의 무한루프
+for(;;) {//무한루프 조건이 없으면 무한루프이다.
+			
+		}
+
 2. continue(반복문의 끝으로 이동한다.)
 //for문에서 continue를 이용하면 증가값으로 이동한다.
 //do ~ while문에서 사용하면 조건으로 이동하게된다.
@@ -120,3 +125,40 @@ public static void main(String[] args) {
 		System.out.println("입력 받은 점수는 " + score + "점 입니다.");
 		in.close();
 	}
+
+5. 범위의 합계
+while문 이용
+public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int num;
+		int score = 0;
+		while(true){
+			System.out.print("점수 입력(0종료) : ");
+			num = in.nextInt();
+			 score += num;
+			if(num == 0) {
+			break;
+			}
+
+		}
+		System.out.println("입력 받은 점수의 합은 " + score + "입니다.");
+		in.close();
+	}
+
+do~while문 이용
+public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int num;
+		int score = 0;
+		do {
+			System.out.print("점수 입력(0종료) : ");
+			num = in.nextInt();
+			score += num;
+		} while (num != 0);
+
+		System.out.println("입력 받은 점수의 합은 " + score + "입니다.");
+		in.close();
+	}
+
