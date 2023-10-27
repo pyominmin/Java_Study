@@ -81,7 +81,14 @@ public static void main(String[] args) {
 			if (kor >= 60 && eng >= 60 && mat >= 60) {
 				System.out.println("합격입니다.");
 			} else {
-				System.out.println("과락으로 탈락입니다.");
+				if(kor < 60) {
+					System.out.print("국어 ");
+				}if(eng < 60) {
+					System.out.print("영어 ");
+				}if(mat < 60) {
+					System.out.print("수학 ");
+				}
+				System.out.print("과락으로 탈락입니다.");
 			}
 		} else {
 			System.out.println("평균 미달 탈락입니다.");
