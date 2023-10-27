@@ -88,4 +88,35 @@ public static void main(String[] args) {
 
 	}
 
-4. 
+4. 점수 입력하기
+while문 이용
+public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int score;
+		
+		while(true){
+			System.out.print("점수 입력(0 ~ 100) : ");
+			score = in.nextInt();
+			
+			if(score >= 0 && score <= 100) {
+			break;
+			}
+		}
+		System.out.println("입력 받은 점수는 " + score + "점 입니다.");
+		in.close();
+	}
+
+do~while문 이용
+public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int score;
+		
+		do{System.out.print("점수 입력(0 ~ 100) : ");
+		score = in.nextInt();
+		}while(score < 0 || score > 100);
+		
+		System.out.println("입력 받은 점수는 " + score + "점 입니다.");
+		in.close();
+	}
