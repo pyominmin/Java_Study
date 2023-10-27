@@ -1,1 +1,102 @@
-switch(조건X, 비교 대상이 되는 변수)
+
+switch(num) { //(조건X, 비교 대상이 되는 변수)
+		case 1:  //case 변수의 값 :
+			System.out.println(num + "은 가위 입니다.");
+			break;//break를 사용하지 않으면 탈출하지 않고 끝까지 수행함
+		case 2:
+			System.out.println(num +"는 바위 입니다.");
+			break;
+		case 3:
+			System.out.println(num +"은 보 입니다.");
+			break;
+		default:
+			System.out.println("오류");
+			break;
+		}
+
+1. 메뉴
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		char menu = in.nextLine().charAt(0);
+		in.close();
+		
+		switch(menu) {
+		case 'f': //if(menu == 'f' || menu == 'F')
+		case 'F':
+			System.out.println("File Menu");
+			break;//break를 사용하지 않으면 탈출하지 않고 끝까지 수행함
+		case 'h':
+		case 'H':
+			System.out.println("Help Menu");
+			break;
+		case 'e':
+		case 'E':
+			System.out.println("Edit Menu");
+			break;
+		default:
+			System.out.println("Error");
+		}
+	} 
+
+2. 자음, 모음 판별
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("영문자 입력 : ");
+		char alphabet = in.nextLine().charAt(0);
+		in.close();
+		
+		switch(alphabet) {
+		case 'A': case 'E': case 'I': case 'O': case 'U':
+		case 'a': case 'e': case 'i': case 'o': case 'u':
+			System.out.println("모음 입니다.");
+			break;
+		default:
+			System.out.println("자음 입니다.");
+			
+		}
+	} 
+
+3. 영문자가 아닙니다.
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("영문자 입력 : ");
+		char alphabet = in.nextLine().charAt(0);
+		in.close();
+		
+		if(alphabet >= 'a' && alphabet <= 'z') {
+			alphabet -=32;
+		}
+		
+		switch(alphabet) {
+		case 'A': case 'E': case 'I': case 'O': case 'U':
+		//case 'a': case 'e': case 'i': case 'o': case 'u':
+			System.out.println("모음 입니다.");
+			break;
+		default:
+			if(alphabet >= 'A' && alphabet <= 'Z') {
+			System.out.println("자음 입니다.");
+			}else {
+				System.out.println("영문자 아닙니다.");
+			}
+		}
+
+4. 남자 여자 구분
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("주민등록번호 입력(형식 : 020321-1234567) : ");
+		char number = in.nextLine().charAt(7);
+		in.close();
+		
+		switch(number) {
+		case '2': case '4':
+			System.out.println("여자입니다.");
+			break;
+		case '1': case '3':
+			System.out.println("남자입니다.");
+			break;
+		default:
+			System.out.println("유효한 주민번호가 아닙니다.");
+		}
+		
+	} 
