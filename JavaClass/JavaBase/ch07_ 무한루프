@@ -1,3 +1,4 @@
+*buffer
 public static void main(String[] args) {
 
 		Scanner in = new Scanner(System.in);
@@ -16,3 +17,7 @@ public static void main(String[] args) {
 		System.out.println("입력 문자 : " + ch + ", 입력 정수 : " + num);
 	}
 
+
+*루프(true)
+1. 제곱근 구하기
+//Math. = 수학적 공식 사용(음수는 구할 수 없음)
