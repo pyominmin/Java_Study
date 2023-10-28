@@ -108,3 +108,30 @@ public static void main(String[] args) {
 			}
 		}
 	}
+
+4. 랜덤 개수
+public static void main(String[] args) {
+		// 0 ~ 99 사이의 무작위 숫자 100 출력 후 카운트 하는 프로그램
+
+		int[] a = new int[100];
+		int[] cnt = new int[10];
+
+		for (int i = 0; i < a.length; i++) {
+			a[i] = (int) (Math.random() * 100);
+			cnt[a[i] / 10]++;// 100개의 숫자를 10개의 그룹으로 나눈다.
+			System.out.printf("%2d ", a[i]);
+			if (i % 10 == 9) {
+				System.out.println(" ");
+			}
+		}
+		int st = 0;
+		int end = 9;
+		System.out.println("------------------------------");
+
+		for (int i = 0; i < cnt.length; i++) {
+			System.out.printf("%2d ~ %2d까지의 정수는 %2d개 입니다.\n", st, end, cnt[i]);
+			st += 0;
+			end += 10;
+		}
+
+	}
