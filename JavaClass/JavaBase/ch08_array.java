@@ -113,13 +113,13 @@ public static void main(String[] args) {
 public static void main(String[] args) {
 		// 0 ~ 99 사이의 무작위 숫자 100 출력 후 카운트 하는 프로그램
 
-		int[] a = new int[100];
-		int[] cnt = new int[10];
+		int[] num = new int[100];//랜덤 수를 저장하는 배열
+		int[] count = new int[10];//구간의 개수를 카운트하는 배열
 
-		for (int i = 0; i < a.length; i++) {
-			a[i] = (int) (Math.random() * 100);
-			cnt[a[i] / 10]++;// 100개의 숫자를 10개의 그룹으로 나눈다.
-			System.out.printf("%2d ", a[i]);
+		for (int i = 0; i < num.length; i++) {
+			num[i] = (int)(Math.random() * 100);
+			count[num[i] / 10]++;// 100개의 숫자를 10개의 그룹으로 나눈다.//10의 자리는 1에 20의 자리는 2에 저장할 것이다.//10의 자리를 배열의 첨자로 이용한다.
+			System.out.printf("%5d ", num[i]);
 			if (i % 10 == 9) {
 				System.out.println(" ");
 			}
@@ -128,10 +128,50 @@ public static void main(String[] args) {
 		int end = 9;
 		System.out.println("------------------------------");
 
-		for (int i = 0; i < cnt.length; i++) {
-			System.out.printf("%2d ~ %2d까지의 정수는 %2d개 입니다.\n", st, end, cnt[i]);
+		for (int i = 0; i < count.length; i++) {
+			System.out.printf("%2d ~ %2d까지의 정수는 %2d개 입니다.\n", st, end, count[i]);
 			st += 0;
 			end += 10;
 		}
 
+	}
+
+5. 배열 출력
+public static void main(String[] args) {
+		int[] arr = {40, 50, 60, 70, 80};
+		int index;
+		
+		Scanner in = new Scanner(System.in);
+		do {
+			System.out.print("시작 인덱스 입력 : ");
+			index = in.nextInt();
+		}while(index < 0 || index > arr.length - 1);
+		in.close();
+		
+		for(int i = index; i < arr.length; i++) {//입력 인덱스부터 끝까지
+			System.out.print(arr[i] + " ");
+		}
+		for(int i = 0; i < index; i++) {//0부터 입력 인덱스 전까지
+			System.out.print(arr[i] + " ");
+		}
+
+	}
+5-1 많이 응용되는 방법
+public static void main(String[] args) {
+		int[] arr = {40, 50, 60, 70, 80};
+		int index;
+		
+		Scanner in = new Scanner(System.in);
+		do {
+			System.out.print("시작 인덱스 입력 : ");
+			index = in.nextInt();
+		}while(index < 0 || index > arr.length - 1);
+		in.close();
+
+		for(int i = index; i <= index + 4; i++){//자신을 포함해서 5번 반복
+			System.out.print(arr[i % 5] + " ");//5로 나누면 나머지가 0, 1, 2, 3, 4를 반복한다.
+		}//arr[2 % 5], arr[3 % 5], arr[4 % 5], arr[5 % 5], arr[6 % 5]
+		 //	2	    3          	4	     0	         1
+	
+		
 	}
