@@ -12,38 +12,77 @@ public static void main(String[] args) {
 	}
 
 1. 배열의 합
-int[] a = new int[5];//배열은 0부터 시작한다. a[5] 처음 배열 방은 0, 마지막 배열 방은 4이다.
-		
-		Scanner in = new Scanner(System.in);
-		int sum = 0;
-		
-		for(int i = 0; i < 5; i++) {//배열의 첨자(index)가 돈다.
-			System.out.printf("입력 %d : ", i + 1);
-			a[i] = in.nextInt();
-			
-			sum += a[i];
+public static void main(String[] args) {
+		char[] upper = new char[100];// char형의 배열을 100개 할당 후 upper가 참조
+
+		System.out.println("\n\n*** 대문자 " + upper.length + "개 출력***");// 오류를 줄이기 위해 사용
+		for (int i = 0; i < upper.length; i++) {
+			int temp = (int) (Math.random() * 26) + 65;// 65 ~ 90// 0부터이기 때문에 26
+			upper[i] = (char) temp; // 문자값으로 변환해서 배열에 저장
+			System.out.print(upper[i] + " ");
+
+			// i(i % 5 == 4) // 4 9 14 19 24 29 ...
+			if (i % 10 == 9) {// 10으로 나눈 나머지가 9// 0부터 시작하기 때문에
+				System.out.println("");// 줄바꿈
+			}
 		}
-//		System.out.print("입력 1 : "); //이름이 같은 변수이기 때문에 반복문을 사용할 수 있다.
-//		a[0] = in.nextInt();
-//		
-//		System.out.print("입력 2 : ");
-//		a[1] = in.nextInt();
-//		
-//		System.out.print("입력 3 : ");
-//		a[2] = in.nextInt();
-//		
-//		System.out.print("입력 4 : ");
-//		a[3] = in.nextInt();
-//		
-//		System.out.print("입력 5 : ");
-//		a[4] = in.nextInt();
-//		
-//		sum = a[0] + a[1] + a[2] + a[3] + a[4]; 
-		
-		System.out.println("정수 5개의 합계는 " + sum + "입니다.");
-		
+
+		char ch;
+		int count = 0; // 개수를 구하는 변수
+		Scanner in = new Scanner(System.in);
+		do {
+			System.out.print("문자 입력 : ");
+			ch = in.nextLine().charAt(0);
+		} while (ch < 'A' || ch > 'Z');//다른 문자 입력 시 무한루프
 		in.close();
+
+		for (int j = 0; j < upper.length; j++) {
+			if (ch == upper[j]) {// 검색문자 == 저장문자
+				count++;
+			}
+		}
+		System.out.printf("%d개", count);
 	}
 
-2. 
+
+2. 등수 증가
+
+public static void main(String[] args) {
+		int[] score = new int[5];
+		int[] rank = new int[5];
+
+		Scanner in = new Scanner(System.in);
+		// 점수 입력, 등수 1로 저장
+		for (int i = 0; i < score.length; i++) {
+			System.out.print((i + 1) + "번 점수 입력 : ");// 괄호를 씌워야 연산된다.
+			score[i] = in.nextInt();
+			
+			rank[i] = 1;
+		}
+		for (int i = 0; i < score.length; i++) {// 순위를 구하려는 기준
+			for (int j = 0; j < score.length; j++) {// 비교하려는 점수의 첨자
+				if (score[i] < score[j]) {// 순위를 구하려는 점수 , 비교 점수
+					rank[i]++;
+				}
+			}
+		}
+		in.close();
+		System.out.println("***등수 출력***");
+		for (int i = 0; i < score.length; i++) {
+			System.out.printf("%d번. %d점. %2d등\n", i + 1, score[i], rank[i]);
+		}
+	}
+
+3. 배열 초기화
+	public static void main(String[] args) {
+		// 배열 초기화
+		//int[] a = new int[] {1, 2, 3, 4, 5};//배열이 0으로 채워져 있어서 초기화 시켜준다./int[](배열)의 크기를 생락한다
+		int[] a = {1, 2, 3, 4, 5};// 초기화의 개수로 배열의 크기가 결정// 초기화를 주는 경우 new int를 생략할 수 있다.
+		
+		for(int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + " ");
+		}
+		System.out.println("");
+	}
+
 
