@@ -85,4 +85,26 @@ public static void main(String[] args) {
 		System.out.println("");
 	}
 
+3-1
+	public static void main(String[] args) {
 
+		int[] month = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };// 각 달의 일수를 저장
+
+		for (int i = 0; i < month.length; i++) {
+			System.out.printf("%2d월의 일수는 %2d일 입니다.\n", i + 1, month[i]);
+		}
+		@SuppressWarnings("resource")
+		Scanner in = new Scanner(System.in);
+		int searchMon;
+		while (true) {
+			System.out.print("검색 월 입력 : ");
+			searchMon = in.nextInt();
+			if (searchMon < 0 || searchMon > 13) {
+
+				continue;
+			} else {
+				System.out.printf("검색한 월의 일수는 %d일 입니다.", month[searchMon - 1]);
+				break;
+			}
+		}
+	}
