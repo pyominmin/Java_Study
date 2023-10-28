@@ -48,4 +48,28 @@ public static void main(String[] args) {
 		}
 	}
 
+2. 시간 구하기
+public static void main(String[] args) {
 
+		@SuppressWarnings("resource")
+		Scanner in = new Scanner(System.in);
+		int inMin, hour, minute;
+
+		while (true) {
+			System.out.print("분 입력 : ");
+			inMin = in.nextInt();
+			
+			if (inMin < 0) {
+				System.out.println("0보다 작을 수는 하실 수 없습니다.");
+				continue;
+			}else if(inMin == 0) {
+				System.out.println("프로그램을 종료합니다.");
+				break;
+				}
+			
+			hour = inMin / 60;
+			minute = inMin % 60;
+			System.out.println(inMin + "분은 " + hour + "시간 " + minute + "분 입니다.");
+			}
+
+		}
