@@ -73,3 +73,53 @@ public static void main(String[] args) {
 			}
 
 		}
+
+3. 사칙연산
+
+public static void main(String[] args) {
+		double n1, n2;
+		char ch, go;
+		@SuppressWarnings("resource")
+		Scanner in = new Scanner(System.in);
+		while (true) {
+			System.out.print("첫 번째 수 : ");
+			n1 = in.nextDouble();
+			in.nextLine();
+
+			System.out.print("두 번째 수 : ");
+			n2 = in.nextDouble();
+			in.nextLine();
+			System.out.print("연산자 : ");
+			ch = in.nextLine().charAt(0);
+
+			double result;
+			switch (ch) {
+			case '+':
+				result = n1 + n2;
+				System.out.println('+');
+				break;
+			case '-':
+				result = n1 - n2;
+				System.out.println('-');
+				break;
+			case '/':
+				result = n1 / n2;
+				System.out.println('/');
+				break;
+			case '*':
+				result = n1 * n2;
+				System.out.println('*');
+				break;
+			default:
+				result = 0;
+			}
+			System.out.printf("\n%.2f %c %.2f = %.3f", n1, ch, n2, result);
+			
+			System.out.print("\n계속(아무키) / 종료(Q/q) : ");
+			go = in.nextLine().charAt(0);
+			if(go == 'Q' || go == 'q') {
+				break;
+			}
+			
+		}
+	}
