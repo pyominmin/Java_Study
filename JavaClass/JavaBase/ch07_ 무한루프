@@ -21,3 +21,30 @@ public static void main(String[] args) {
 *루프(true)
 1. 제곱근 구하기
 //Math. = 수학적 공식 사용(음수는 구할 수 없음)
+public static void main(String[] args) {
+		
+		@SuppressWarnings("resource")
+		Scanner in =new Scanner(System.in);
+		double num, result;
+		while(true) {
+			System.out.print("제곱근을 입력하세요 : ");
+			num = in.nextDouble();
+			in.nextLine();//버퍼에 남아있는 엔터 가져오기
+			
+			if(num < 0) {
+				System.out.println("0보다 작은 수는 입력하실 수 없습니다.");
+				continue;//반복문의 선두로 이동
+			}
+			
+			result = Math.sqrt(num);//제곱근 구하기
+			System.out.println(num + "제곱근은 " + result + "입니다.");
+			System.out.print("계속(아무키) / 종료(Q/q) : ");
+			char isExit;
+			isExit = in.nextLine().charAt(0);
+			
+			if(isExit == 'Q' || isExit == 'q') {
+				break;
+			}
+		}
+	}
+
