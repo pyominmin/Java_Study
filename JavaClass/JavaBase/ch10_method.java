@@ -113,7 +113,7 @@ public static int sum(int num1, int num2) {//출력되는 자료형이 int이다
 		System.out.println("나눗셈 결과는 " + divide(n1, n2) + "입니다.");
 	}
 
-4-1 큰 수 작은 수 비교
+4-1 두 수 비교
 	public static int largeNumber(int num1, int num2) {
 		if(num1 < num2) {
 			return num2;
@@ -141,4 +141,48 @@ public static int sum(int num1, int num2) {//출력되는 자료형이 int이다
 		System.out.println("작은 수는 " + smallNumber(n1, n2) + "이다.");
 	}
 
-4-2 
+4-2 boolean 두 수 비교
+public static int largeNumber(int num1, int num2) {
+		if(num1 < num2) {
+			return num2;
+		}else {
+			return num1;
+		}
+	}
+	
+	public static int smallNumber(int num1, int num2) {
+			return num1 < num2 ? num1 : num2;
+	}
+	
+	public static boolean sameNumber(int n1, int n2) {
+//		if(n1 == n2) {
+//			return true;
+//		}else {
+//			return false;
+//		}
+		
+		return n1 == n2;
+	}
+	
+	public static void main(String[] args) {
+		int n1, n2; 
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("두 수 입력(공백 구분) : ");
+		n1 = in.nextInt();
+		n2 = in.nextInt();
+		in.close();
+
+		int large = largeNumber(n1, n2);//두 수 중 큰 수를 구해 리턴하는 메서드 호출
+		
+		System.out.println("큰 수는 " + large + "이다.");
+		System.out.println("작은 수는 " + smallNumber(n1, n2) + "이다.");
+		
+		if(sameNumber(n1, n2)){//두 수가 같다면 true, 다르다면 false => boolean
+			System.out.println("두 수는 같습니다.");
+		}else {
+			
+		}
+	}
+
+4-3 
