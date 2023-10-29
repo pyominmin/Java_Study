@@ -84,7 +84,7 @@ public static void printStar(int count) {
 		printChar(count, ch);
 	}
 
-4. 리턴(return)
+4. 리턴(return) //리턴은 오직 하나만
 public static int sum(int num1, int num2) {//출력되는 자료형이 int이다.
 		int re = num1 + num2;
 		return re;//연산을 해서 호출한 곳으로 계산 결과를 돌려준다 즉, return은 함수의 종료이다.
