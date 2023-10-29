@@ -258,3 +258,97 @@ public static void initScore(int[] score, int[] rank) {
 		displayRank(score, rank);
 
 	}
+
+9. 오버로딩
+public static void randomizeFloat(double[] num) {
+		for (int i = 0; i < num.length; i++) {
+			num[i] = Math.random() * 1000;
+		}
+	}
+
+	public static void display(double[] num) {
+		for (int i = 0; i < num.length; i++) {
+			System.out.printf("%.2f  ", num[i]);
+		}
+		System.out.println();
+	}
+
+	public static double getSum(double[] num) {
+		int sum = 0;
+		for (int i = 0; i < num.length; i++) {
+			sum += num[i];
+		}
+		return sum;
+	}
+
+	public static void main(String[] args) {
+		double[] num = new double[10];
+		randomizeFloat(num);// 랜덤하게 실수 값 저장
+		System.out.println("랜덤 실수 값 " + num.length + "개 출력");
+		display(num);// 출력
+
+		System.out.println("배열의 합은 " + getSum(num) + "입니다.");
+	}
+
+10.오버로딩 
+public static void randomizeFloat(double[] num) {
+		for (int i = 0; i < num.length; i++) {
+			num[i] = Math.random() * 1000;
+		}
+	}
+
+	public static void display(double[] num) {
+		for (int i = 0; i < num.length; i++) {
+			System.out.printf("%.2f  ", num[i]);
+		}
+		System.out.println();
+	}
+
+	public static double getSum(double[] num) {
+		int sum = 0;
+		for (int i = 0; i < num.length; i++) {
+			sum += num[i];
+		}
+		return sum;
+	}
+
+	public static void displayLessNumber(double[] num, double limit) {
+		for(int i = 0; i < num.length; i++) {
+			if(num[i] < limit) {
+				System.out.printf("%.2f  ", num[i]);
+			}	
+		}
+		System.out.println();
+	}
+	
+	public static void displayRangeNumber(double[] num, double begin, double end) {
+		for(int i = 0; i < num.length; i++) {
+			if(num[i] >= begin && num[i] <= end) {
+				System.out.printf("%.2f  ", num[i]);
+			}
+		}
+		System.out.println();
+	}
+	
+	
+	public static void main(String[] args) {
+		double[] num = new double[10];
+		randomizeFloat(num);// 랜덤하게 실수 값 저장
+		System.out.println("랜덤 실수 값 " + num.length + "개 출력");
+		display(num);// 출력
+
+		System.out.println("배열의 합은 " + getSum(num) + "입니다.");
+		
+		System.out.print("\n몇 까지 출력 하시겠습니까? ");
+		Scanner in = new Scanner(System.in);
+		double limit = in.nextDouble();
+		displayLessNumber(num, limit);//limit 보다 작은 수만 출력
+		
+		System.out.print("\n 출력 범위를 입력하세요\n");
+		System.out.println("출력 시작 수와 끝 수를 공백으로 구분해서 입력하세요");
+		double begin = in.nextDouble();
+		double end = in.nextDouble();
+		
+		displayRangeNumber(num, begin, end);//begin ~ end 범위의 수를 출력
+		in.close();
+	}
