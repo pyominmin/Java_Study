@@ -185,4 +185,91 @@ public static int largeNumber(int num1, int num2) {
 		}
 	}
 
-4-3 
+4-3 등급
+public static char getGrade(int score) {
+			if(score <= 90 && score >= 100) {
+				return 'A';
+			}else if(score >= 80) {
+				return 'B';
+			}else if(score >= 70) {
+				return 'C';
+			}else if(score >= 60) {
+				return 'D';
+			}else {
+				return 'F';
+			}
+		}
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int score;
+		System.out.print("점수 입력 (0 ~ 100) : ");
+		score = in.nextInt();
+		in.close();
+		
+		System.out.println("점수 : " + score + ", 등급 : " + getGrade(score));
+	}
+
+4-4 범위의 합계
+	public static double getRangeSum(int begin, int end) {
+		double total = 0;
+		for(double i = begin; i <= end; i++) {
+			total += i;
+		}
+		return total;//합계 리턴
+	}
+	
+	public static void main(String[] args) {
+		int n1, n2;
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("두 수 입력(공백 구분) : ");
+		n1 = in.nextInt();
+		n2 = in.nextInt();
+		in.close();
+
+		double result = getRangeSum(n1, n2);
+		System.out.println("두 수의 범위 합은" + result + "입니다.");
+	}
+
+4-5 factorial
+public static double factorial(int n) {
+		if( n <= 1) {//조건에 따라 수행되는 명령문이 단일문ㅇ니 경우 중괄호{}는 생략 가능하다.
+			return 1;
+		}
+		double mul = 1;
+		for(int i = 2; i <= n; i++) {
+			mul *= i;
+		}
+		return mul;
+	}
+	
+	public static void main(String[] args) {
+		int n;
+		Scanner in = new Scanner(System.in);
+		System.out.print("자연수 입력 : ");
+		n = in.nextInt();
+		in.close();
+		
+		System.out.println(n + "! = " + factorial(n));
+	}
+
+5. 배열의 최댓값
+public static int getMax(int[] arr) {
+		int max = arr[0];
+		
+		for(int i = max; i < arr.length; i++ ) {
+			if(max < arr[i]) {//최댓값 < 비교값
+				max = arr[i];
+			}
+		}
+		return max;
+	}
+	
+	public static void main(String[] args) {
+		int[] arr = {3, 45, 2, 87, 34, 7, 9, 5, 345, -3};
+		
+		int max = getMax(arr);//배열에서 최댓값을 구해 리턴하는 메서드
+
+		System.out.println("배열의 최댓값은 " + max + "입니다.");
+	}
