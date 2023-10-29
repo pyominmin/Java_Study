@@ -352,3 +352,49 @@ public static void randomizeFloat(double[] num) {
 		displayRangeNumber(num, begin, end);//begin ~ end 범위의 수를 출력
 		in.close();
 	}
+
+11. 역순으로 배열 만들기
+
+
+	public static void randomize(int[] num) {
+		for (int i = 0; i < num.length; i++) {
+			num[i] = (int) (Math.random() * 100) + 1;
+		}
+	}
+
+	public static void display(int[] num) {
+		for (int i = 0; i < num.length; i++) {
+			System.out.print(num[i] + " ");
+		}
+		System.out.println();
+	}
+
+	public static void reverse(int[] arr) {
+
+		int length = arr.length; // 배열의 크기
+
+		for (int i = 0; i < length / 2; i++) {// 교환횟수
+			// 값 교환
+			int temp = arr[i];
+			arr[i] = arr[length - 1 - i];
+			arr[length - 1 - i] = temp;
+		}
+		// 값 교환
+//		int temp = arr[0];
+//		arr[0] = arr[9];
+//		arr[9] = temp;
+
+	}
+
+	public static void main(String[] args) {
+		int[] arr = new int[100];
+
+		randomize(arr); // 저장
+		System.out.println("\n\n***저장 된 데이터 출력***\n\n");
+		display(arr);// 출력
+
+		reverse(arr);// 리버스를 호출할떄마다 뒤집어진다.
+
+		System.out.println("\n\n***역순으로 저장 된 데이터 출력***\n\n");
+		display(arr);// 배열에 저장된 데이터를 역순 저장
+	}
