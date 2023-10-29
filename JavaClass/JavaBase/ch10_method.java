@@ -36,4 +36,109 @@ public static void sum(int num1, int num2) {//public static void main의 n1과 n
 		sum(n1, n2); //메서드로 호출// int num1, int num2로 호출
 	}
 
-2. 
+2. 나눗셈
+public static void divide(int num1, int num2) {
+		System.out.println("나눗셈한 결과는" + (num1 / num2) + "입니다.");//그냥 출력만 해주기 때문에 void
+	}
+	public static void main(String[] args) {
+		int n1, n2; //지역변수 : 블록{} 내에서만 사용 가능한 변수
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("두 수 입력(공백 구분) : ");
+		n1 = in.nextInt();
+		n2 = in.nextInt();
+		in.close();
+		
+		sum(n1, n2); //메서드로 호출// int num1, int num2로 호출
+		divide(n1, n2);
+	}
+
+3. 별찍기
+public static void printStar(int count) {
+		for(int i = 1; i <= count ; i++) {
+			System.out.print("*");	
+		}
+		System.out.println("");
+	}
+	
+	public static void printChar(int count, char ch) {
+		for(int i = 1; i <= count ; i++) {
+			System.out.print(ch + " ");
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		int count;
+		System.out.print("반복 횟수 입력 : ");
+		count = in.nextInt();
+		in.nextLine();
+		
+		char ch;
+		System.out.print("반복 문자 입력: ");
+		ch = in.nextLine().charAt(0);
+		in.close();
+		
+		printStar(count);//반복횟수만큼 '*'문자를 출력하는 메서드
+		printChar(count, ch);
+	}
+
+4. 리턴(return)
+public static int sum(int num1, int num2) {//출력되는 자료형이 int이다.
+		int re = num1 + num2;
+		return re;//연산을 해서 호출한 곳으로 계산 결과를 돌려준다 즉, return은 함수의 종료이다.
+		//return 다음에 코드를 입력 시 오류가 난다. return에서 호출한 곳으로 돌아가기 때문에 그 아래의 코드는 사용되지 않는다.
+	}
+
+	public static double divide(int num1, int num2) {
+		double re = (double)num1 / num2;//정수 연산이되지 않게 형변환
+		return re;
+	}
+
+	public static void main(String[] args) {
+		int n1, n2;
+		
+		Scanner in = new Scanner(System.in);
+
+		System.out.print("두 수 입력(공백 구분) : ");
+		n1 = in.nextInt();
+		n2 = in.nextInt();
+		in.close();
+
+		double result = sum(n1, n2) * 1234 / 3.4;//n1, n2를 sum메서드로 보낸다.
+		System.out.println("연산 결과는 " + result + "입니다.");
+		System.out.println("연산 결과는 " + sum(n1, n2) + "입니다.");
+		
+		System.out.println("나눗셈 결과는 " + divide(n1, n2) + "입니다.");
+	}
+
+4-1 큰 수 작은 수 비교
+	public static int largeNumber(int num1, int num2) {
+		if(num1 < num2) {
+			return num2;
+		}else {
+			return num1;
+		}
+	}
+	
+	public static int smallNumber(int num1, int num2) {
+			return num1 < num2 ? num1 : num2;
+	}
+	
+	public static void main(String[] args) {
+		int n1, n2; 
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("두 수 입력(공백 구분) : ");
+		n1 = in.nextInt();
+		n2 = in.nextInt();
+		in.close();
+
+		int large = largeNumber(n1, n2);//두 수 중 큰 수를 구해 리턴하는 메서드 호출
+		
+		System.out.println("큰 수는 " + large + "이다.");
+		System.out.println("작은 수는 " + smallNumber(n1, n2) + "이다.");
+	}
+
+4-2 
