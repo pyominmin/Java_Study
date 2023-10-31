@@ -89,14 +89,83 @@ class Triangle{//클래스 안에서 선언된 변수를 instance variable(iv)�
 }
 
 
-public class _01_Triangle {
+public class _01_Triangle {//파일 이름하고 같은 애가 public
 
 	public static void main(String[] args) {
 		//만들어진 삼각형 클래스를 가져다 쓰자 
 		Triangle t1 = new Triangle();//변수 선언x, 객체 생성//t1은 Triangle()클래스의 주소를 가지게된다.
 		t1.setTriangle(3.8, 9.2);//값 설정
 		System.out.println("t1의 삼각형의 넓이는" + t1.getArea() + "입니다.");
+
+		Triangle t2 = new Triangle();//instance(객체 생성)
+		t2.setTriangle(8, 13);
+		System.out.println("t2의 삼각형의 넓이는" + t2.getArea() + "입니다.");
+		
+		double b, h;
+		Scanner in = new Scanner(System.in);
+		System.out.print("밑변 입력 : ");
+		b = in.nextDouble();
+		System.out.print("높이 입력 : ");
+		h = in.nextDouble();
+		in.close();
+		
+		Triangle t3 = new Triangle();//instance 생성
+		t3.setTriangle(b, h);//입력 값을 전달
+		System.out.println("t3의 삼각형의 넓이는" + t3.getArea() + "입니다.");
 	}
 
 }
 //객체와 instance는 같다고 본다. 우린 객체라고 잘 부르지 않고 instance라고 부른다.
+
+1-2 원의 넓이 구하기
+
+
+import java.util.Scanner;
+
+class Circle{
+	
+	//instance variable(iv)
+	public double mRadius = 0;//클래스의 변수는 m을 많이 붙여준다.//지역변수와 구분하기 위함
+	public final double mPI = 3.141592;//변허지 않는 값은 상수(final)로 저장
+	
+	public void setRadius(double radius) {
+		mRadius = radius;
+	}
+	
+	public double getRArea() {//원위 둘레
+		return mPI * mRadius * mRadius;
+	}
+	
+	public double getCircumference() {//원의 넓이
+		return 2 * mPI * mRadius;
+	}
+	
+	
+}
+
+//파일명과 동일한 클래스가 public 클래스가 되어야 한다.
+public class _02_Circle {
+
+	public static void main(String[] args) {
+		Circle c1 = new Circle();
+		//클래스 멤버 접근 시 => 인스턴스.멤버
+		
+		
+		c1.setRadius(8.3);
+		System.out.println("원의 넓이는 " + c1.getRArea() + "입니다.");
+		System.out.println("원의 둘레는 " + c1.getCircumference() + "입니다.");
+		
+		Scanner in = new Scanner(System.in);
+		double rad;
+		System.out.print("반지름 입력 : ");
+		rad = in.nextDouble();
+		in.close();
+		
+		Circle c2 = new Circle();
+		c2.setRadius(rad);
+		System.out.println("원의 넓이는 " + c2.getRArea() + "입니다.");
+		System.out.println("원의 둘레는 " + c2.getCircumference() + "입니다.");
+	}
+
+}
+
