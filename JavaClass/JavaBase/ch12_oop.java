@@ -86,6 +86,11 @@ class Triangle{//클래스 안에서 선언된 변수를 instance variable(iv)�
 		double area = base * height / 2;
 		return area;//area는 지역변수
 	}
+
+
+	public double getHypotenuse() {
+		return Math.sqrt(base * base + height * height);
+	}
 }
 
 
@@ -96,10 +101,12 @@ public class _01_Triangle {//파일 이름하고 같은 애가 public
 		Triangle t1 = new Triangle();//변수 선언x, 객체 생성//t1은 Triangle()클래스의 주소를 가지게된다.
 		t1.setTriangle(3.8, 9.2);//값 설정
 		System.out.println("t1의 삼각형의 넓이는" + t1.getArea() + "입니다.");
+		System.out.println("t1삼각형의 빗변의 길이는" + t1.getHypotenuse() + "입니다.");
 
 		Triangle t2 = new Triangle();//instance(객체 생성)
 		t2.setTriangle(8, 13);
 		System.out.println("t2의 삼각형의 넓이는" + t2.getArea() + "입니다.");
+		System.out.println("t2삼각형의 빗변의 길이는" + t2.getHypotenuse() + "입니다.");
 		
 		double b, h;
 		Scanner in = new Scanner(System.in);
@@ -112,6 +119,7 @@ public class _01_Triangle {//파일 이름하고 같은 애가 public
 		Triangle t3 = new Triangle();//instance 생성
 		t3.setTriangle(b, h);//입력 값을 전달
 		System.out.println("t3의 삼각형의 넓이는" + t3.getArea() + "입니다.");
+		System.out.println("t3삼각형의 빗변의 길이는" + t3.getHypotenuse() + "입니다.");
 	}
 
 }
@@ -165,6 +173,8 @@ public class _02_Circle {
 		c2.setRadius(rad);
 		System.out.println("원의 넓이는 " + c2.getRArea() + "입니다.");
 		System.out.println("원의 둘레는 " + c2.getCircumference() + "입니다.");
+
+		
 	}
 
 }
