@@ -224,7 +224,82 @@ public class _03_Troperzoid {
 
 }
 
-1-4 
+1-4 연산
 
+
+class Calculator{
+	//연산 횟수 체크
+	int[] count = new int[6];
+	
+	
+	public double getSume(double n1, double n2) {
+		count[0]++;
+		return n1 + n2;
+	}
+	public double getSub(double n1, double n2) {
+		count[1]++;
+		return n1 - n2;
+	}
+	public double getMul(double n1, double n2) {
+		count[2]++;
+		return n1 * n2;
+	}
+	public double getDiv(double n1, double n2) {
+		count[3]++;
+		return n1 / n2;
+	}
+	
+	public double getPower(int x, int y) {
+		count[4]++;
+		double result = 1;
+		
+		for(int i = 1; i <= y; i++) {
+			result = result * x;
+			
+			return result;
+		}
+		return result;
+	}
+	
+	public double getPowerOfTwo(int y) {
+		count[5]++;
+		double result = 1;
+		
+		for(int i = 1; i <= y; i++) {
+			result = result * 2;
+			
+			return result;
+		}
+		return result;
+	}
+	
+	void showOpCount() {
+		System.out.println("\n\t ***연산 횟수 출력***\n\n");
+		System.out.printf("덧 셈은 : %3d\n", count[0]);
+		System.out.printf("뺄 셈은 : %3d\n", count[1]);
+		System.out.printf("곱 셈은 : %3d\n", count[2]);
+		System.out.printf("나눗셈은 : %3d\n", count[3]);
+		System.out.printf("x ^ y : %3d\n", count[4]);
+		System.out.printf("2 ^ y : %3d\n", count[5]);
+		
+	}
+	
+}
+
+
+public class _04_Calculator {
+
+	public static void main(String[] args) {
+		
+		Calculator cal = new Calculator();
+		System.out.println("두 수의 합 = " + cal.getSume(3.4, 2.2));
+		System.out.println("두 수의 합 = " + cal.getDiv(3.4, 2.2));
+		System.out.println("두 수의 합 = " + cal.getSume(3.4, 2.2));
+		System.out.println("두 수의 합 = " + cal.getSub(3.4, 2.2));
+		System.out.println("두 수의 합 = " + cal.getPowerOfTwo(3));
+		cal.showOpCount();
+	}
+
+}
 
 	
