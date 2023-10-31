@@ -61,4 +61,42 @@ ex, 가루약
 *자바 파일 하나당 클래스 하나(public class는 단 하나만 존재해야 한다.)가 좋다.
 
 
+1. 클래스로 프로그래밍
 
+//동일 파일 내에 클래스가 2개 이상인 경우 public 클래스는 단 하나만 존재해야 한다.
+//public 클래스는 파일명과 일치해야 한다.(대소문자 구별)
+
+//삼각형 클래스
+class Triangle{//클래스 안에서 선언된 변수를 instance variable(iv)이라고 한다.
+	
+	//Triangle 가방에는 모든 기능과 데이터들이 들어가는데 데이터들은 iv 이고, 기능들은 im이다.
+	//instance method(im)은 클래스 내에서 선언된 메서드(함수)
+	//Triangle 가방을 만들려면 iv와 im이 필요하다.
+	//iv = base, height
+	//im = setTriangle, getArea
+	
+	public double base = 0, height = 0;//public 공개된 멤버다.
+	
+	public void setTriangle(double _base, double _height) {//매개변수를 받아서 base와 height를 초기화해준다.
+		base = _base;//클래스에서 선언된 변수 (iv)
+		height = _height;
+	}
+	
+	public double getArea() {
+		double area = base * height / 2;
+		return area;//area는 지역변수
+	}
+}
+
+
+public class _01_Triangle {
+
+	public static void main(String[] args) {
+		//만들어진 삼각형 클래스를 가져다 쓰자 
+		Triangle t1 = new Triangle();//변수 선언x, 객체 생성//t1은 Triangle()클래스의 주소를 가지게된다.
+		t1.setTriangle(3.8, 9.2);//값 설정
+		System.out.println("t1의 삼각형의 넓이는" + t1.getArea() + "입니다.");
+	}
+
+}
+//객체와 instance는 같다고 본다. 우린 객체라고 잘 부르지 않고 instance라고 부른다.
