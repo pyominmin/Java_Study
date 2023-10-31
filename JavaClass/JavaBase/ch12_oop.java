@@ -179,3 +179,52 @@ public class _02_Circle {
 
 }
 
+1-3 사다리꼴의 넓이
+
+
+import java.util.Scanner;
+
+class Troperzoid{
+	
+	public double mTop, mBottom, mHeight;
+	
+	public void setTroperzoid(double top, double bottom, double height) {
+		mTop = top;
+		mBottom = bottom;
+		mHeight = height;
+		
+	}
+	
+	public double getTroperzoid() {
+		return ((mTop + mBottom) * mHeight / 2);
+		
+	}
+	
+}
+
+
+public class _03_Troperzoid {
+
+	public static void main(String[] args) {
+		Troperzoid t1 = new Troperzoid();
+		t1.setTroperzoid(3, 5, 8);
+		System.out.printf("사다리꼴의 넓이는 %.3f", t1.getTroperzoid());
+		System.out.println("");
+		
+		Troperzoid t2 = new Troperzoid();
+		Scanner in = new Scanner(System.in);
+		System.out.print("윗변, 밑변,  높이 입력 : ");
+		double t = in.nextDouble();
+		double b = in.nextDouble();
+		double h = in.nextDouble();
+		t2.setTroperzoid(t, b, h);
+		in.close();
+		System.out.printf("사다리꼴의 넓이는 %.3f", t2.getTroperzoid());
+	}
+
+}
+
+1-4 
+
+
+	
