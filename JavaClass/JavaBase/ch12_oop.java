@@ -302,4 +302,38 @@ public class _04_Calculator {
 
 }
 
+2. 평문 회문(boolean)
+
+import java.util.Scanner;
+
+public class _12_palindrome {
+
+	public static boolean isPalindrome(String str) {
+		int len = str.length();// 문자열의 길이 구하기
+
+		for (int i = 0; i < len / 2; i++) {// 비교 횟수는 문자열의 반만큼 나누면 판별 가능
+			//if (str[i] != str[len - 1 - i]) {// 0-5, 1-4, 2-3 //문자가 같지 않다면 평문
+			if(str.charAt(i) != str.charAt(len -1 - i)){//문자가 같지 않다면 평문
+				return false;//호출한 곳으로 돌아간다.(함수의 종료)
+			}
+		}
+		return true;//모든 글자가 같다면? 회문
+}
 	
+	public static void main(String[] args) {
+		String str;
+		Scanner in = new Scanner(System.in);
+		System.out.print("문자열을 입력 : ");
+		str = in.nextLine();
+		in.close();
+		
+		if(isPalindrome(str)){//회문이면 trye, 평문이면 false리턴
+			System.out.println("회문입니다.");
+		}else {
+			System.out.println("평문입니다.");
+		}
+	
+	}
+
+}
+
