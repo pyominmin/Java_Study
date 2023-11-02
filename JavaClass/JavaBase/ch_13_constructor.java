@@ -216,3 +216,57 @@ public class _03_StudentScore {
 
 }
 3. 생성자 연습
+
+import java.util.Scanner;
+
+class RightTriangle{
+	public RightTriangle() {
+		base = 0;
+		height = 0;
+		System.out.println("1.생성자 호출");
+	}
+
+
+	public RightTriangle(double _base, double _height) {
+		base = _base;
+		height = _height;
+		System.out.println("2.생성자 호출");
+	}
+	
+	public double getArea() {
+		double area = base * height / 2;
+		return area;
+	}
+	
+	public double getHypotenuse() {
+		return Math.sqrt(base * base + height * height);
+	}
+	public double base, height;
+}
+
+public class _04_Triangle {
+
+	public static void main(String[] args) {
+		RightTriangle t1 = new RightTriangle();
+		System.out.println("t1의 삼각형의 넓이는" + t1.getArea() + "입니다.");
+		System.out.println("t1삼각형의 빗변의 길이는" + t1.getHypotenuse() + "입니다.");
+		
+		RightTriangle t2 = new RightTriangle(8, 13);
+		System.out.println("t2의 삼각형의 넓이는" + t2.getArea() + "입니다.");
+		System.out.println("t2삼각형의 빗변의 길이는" + t2.getHypotenuse() + "입니다.");
+		
+		double b, h;
+		Scanner in = new Scanner(System.in);
+		System.out.print("밑변 입력 : ");
+		b = in.nextDouble();
+		System.out.print("높이 입력 : ");
+		h = in.nextDouble();
+		in.close();
+		
+		RightTriangle t3 = new RightTriangle(b, h);//instance 생성
+		System.out.println("t3의 삼각형의 넓이는" + t3.getArea() + "입니다.");
+		System.out.println("t3삼각형의 빗변의 길이는" + t3.getHypotenuse() + "입니다.");
+	}
+
+}
+
