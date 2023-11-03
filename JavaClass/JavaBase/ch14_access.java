@@ -44,7 +44,7 @@ public class _01_AccessModifier {
 
 }
 
-2. getter
+2. getter, setter
 
 //시간 클래스
 class Time{
