@@ -270,3 +270,37 @@ public class _04_Triangle {
 
 }
 
+4. 생성자 연습
+
+import java.util.Scanner;
+
+public class _05_DigitSum {
+	
+	public static int CalculateDigitSum(String numStr) {
+		int total = 0;
+		for(int i = 0; i < numStr.length(); i++) {
+			//수 형태의 문자를 실제 수로 변환
+			int digit = numStr.charAt(i) - 48;
+			total = total + digit;//numStr[i];
+		}
+		return total;
+	}
+
+	public static void main(String[] args) {
+		String str;
+		Scanner in = new Scanner(System.in);
+		do {
+		System.out.print("정수 입력(최대 16자리) : ");
+		str = in.nextLine();
+		
+		//matches
+		}while(str.length() > 16 || str.matches(".*[A-Za-z].*"));
+			
+		//CalculateDigitSum메서드 : 문자열 자릿수의 합을 구해 리턴
+		//int sum = CalculateDigitSum(str);
+		//System.out.println("입력 받은 문자열의 합계 " + sum + "입니다.");
+		System.out.println("입력 받은 문자열의 합계 " + CalculateDigitSum(str) + "입니다.");
+		in.close();
+	}
+
+}
