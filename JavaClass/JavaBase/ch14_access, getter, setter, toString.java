@@ -152,3 +152,72 @@ public class _02_Time {
 	}
 
 }
+2-1 getter, setter, toString
+
+class Alpha{
+	public Alpha(int count) {
+		mLetter = new char[count];//생성자 : 전달받은 크기로 char형의 배열 생성
+		mLetterSize = count;
+		System.out.println("생성자 : 전달받은 크기로 char형의 배열 생성");
+	}
+	
+	public void randomize(int num) {
+		int begin = 0;
+		if(num == 1) {
+			begin = 65;
+		}else if(num == -1) {
+			begin = 97;
+		}else {
+			return;//함수 종료//값을 안쓰면 void
+		}
+		
+		for(int i = 0; i < mLetterSize; i++) {
+			int n = ((int)(Math.random() * 26) + begin);
+				mLetter[i] = (char)n;//유니코드에 해당하는 문자로 저장
+			}
+		
+		
+//		if(num == 1) {
+//			for(int i = 0; i < mLetterSize; i++) {
+//			int n = ((int)(Math.random() * 26) + 65);
+//				mLetter[i] = (char)n;//유니코드에 해당하는 문자로 저장
+//			}
+//		}else if(num == -1){
+//			for(int i = 0; i < mLetterSize; i++) {
+//			int n = ((int)(Math.random() * 26) + 97);
+//			mLetter[i] = (char)n;
+//			}
+//		}else {
+//			
+//		}
+		
+	}
+	
+	public void display() {//display :배열에 저장된 모든 값을 출력 
+		System.out.println("***랜덤하게 저장된 문자 출력***");
+		for(int i = 0; i < mLetterSize; i++) {
+			System.out.print(mLetter[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	public int getSize() {
+		return mLetterSize;
+	}
+	
+	private char[] mLetter = null;
+	private int mLetterSize = 0;
+}
+
+public class _04_AlphaCount {
+
+	public static void main(String[] args) {
+		Alpha al = new Alpha(5);//인스턴스 생성 시 개수 전달
+		al.randomize(1);
+		al.display();
+		System.out.println("배열의 크기는 " + al.getSize() + "입니다.");
+
+	}
+
+}
+2-2 getter, setter, toString
