@@ -110,6 +110,18 @@ class Time{
 		return mHour + ":" + mMinute + ":" + mSecond;
 	}
 	
+	public void increaseSecond(int increase) {
+		mSecond += increase;
+		
+		mMinute = mMinute + mSecond / 60;//분을 증가
+		mSecond = mSecond % 60;//나머지를 초로
+		
+		mHour = mHour + mMinute / 60;//시간을 증가
+		mMinute = mMinute % 60;//나머지만 분이된다
+		
+		mHour = mHour % 24;//24시간제
+	}
+	
 	private int mHour = 0, mMinute = 0, mSecond = 0; //생성하면서 0으로 세팅
 }
 
@@ -117,7 +129,7 @@ class Time{
 public class _02_Time {
 
 	public static void main(String[] args) {
-		Time t1 = new Time(13, 23, 57);//인스턴스 생성
+		Time t1 = new Time(14, 23, 57);//인스턴스 생성
 		Time t2 = new Time(9, 18, 12);
 		Time t3 = new Time();
 		
@@ -133,6 +145,10 @@ public class _02_Time {
 		System.out.println(t1.getHour() + "시" + t1.getMinute() + "분" + t1.getSecond() + "초" );
 		System.out.println(t2.getHour() + "시" + t2.getMinute() + "분" + t2.getSecond() + "초" );
 		System.out.println(t3.getHour() + "시" + t3.getMinute() + "분" + t3.getSecond() + "초" );
+		
+		System.out.println("t1 = " + t1.toString());
+		t1.increaseSecond(3611);
+		System.out.println("t1 + 3600초 = " + t1.toString());
 	}
 
 }
