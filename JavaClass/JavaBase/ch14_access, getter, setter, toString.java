@@ -221,3 +221,135 @@ public class _04_AlphaCount {
 
 }
 2-2 getter, setter, toString
+
+class Date{
+
+	public boolean isLeapYear(int year) {
+		//4년마다 한번씩 돌아오는 해, 100년마다 돌아오는 해는 평년
+		if(year % 4 == 0 && year % 100 != 0) {
+			return true;
+		}else if(year % 400 == 0) {//400년마다 돌아오는 해는 다시 윤년
+			return true;	
+		}else {
+			return false;
+		}
+	}
+	
+	public int getCurrentDays(int month) {
+		int[] month12 = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};//배열은 0부터 시작하므로 0번방을 더미로 채워 널는다 보통 0을 줌
+		if(isLeapYear(mYear)){//윤년이면?
+			month12[2] = 29;
+		}else {
+			month12[2] = 28;
+		}
+		return month12[month];
+	}
+	
+	public Date(){//기본 생성자를 꼭 만들어야 아무 값을 안넣었을 때 기본값을 넣어준다.
+//		mYear = 1900;
+//		mMonth = 1;
+//		mDay = 1;
+	
+	}
+	
+	public String toString() {
+		return mYear + "/" + mMonth + "/" + mDay;//문자열을 만들어서 리턴(대표 출력 구문)
+	}
+	
+	public Date(int year, int month, int day){
+		if(year >= 1) {
+		mYear = year;
+		}
+		if(month >= 1 && month <= 12) {
+		mMonth = month;
+		}
+		if(day >= 1 && day <= getCurrentDays(mMonth)) {//최대 일수는 월에 따라 달라져야 한다.
+		mDay = day;
+		}
+		
+		}
+	public int getYear() {
+		return mYear;
+	}
+	public int getMonth() {
+		return mMonth;
+	}
+	public int getDay() {
+		return mDay;
+	}
+		
+		public void setYear(int year) {
+			if(year >= 1) {
+				mYear = year;
+			}
+		}
+		
+		public void setMonth(int month) {
+			if(month >= 1 && month <= 12) {
+				mMonth = month;
+			}
+		}
+		
+		public void setDay(int day) {
+			if(day >= 1 && day <= getCurrentDays(mMonth)) {
+				mDay = day;
+			}
+			
+		}
+		
+		
+//		public void increase100days() {//100일 계산 메서드
+//			mDay += 99;//오늘부터 1일
+//			
+//			while(mDay - getCurrentDays(mMonth) > 0) {//최대 일수를 뺄 수 있어?
+//				mDay = mDay - getCurrentDays(mMonth);
+//				mMonth++;
+//				
+//				if(mMonth == 13) {
+//					mMonth = 1;//1월로 변경
+//					mYear ++;
+//				}
+//			}
+//		}
+		
+		public void increaseDays(int increaseDays) {
+			mDay += (increaseDays - 1);//오늘부터 1일
+			
+			while(mDay - getCurrentDays(mMonth) > 0) {//최대 일수를 뺄 수 있어?
+				mDay = mDay - getCurrentDays(mMonth);
+				mMonth++;
+				
+				if(mMonth == 13) {
+					mMonth = 1;//1월로 변경
+					mYear ++;
+				}
+			}
+		}
+	
+	private int mYear = 1900, mMonth = 1, mDay = 1;
+}
+
+public class _03_Date {
+
+	public static void main(String[] args) {
+		Date d1 = new Date(2000, 2, 30);
+		Date d2 = new Date(2004, 12, 27);
+		
+		d1.setDay(29);//d1의 일을 29일로 변경
+		
+		System.out.println("d1 = " + d1.getYear() + "/" + d1.getMonth() + "/" + d1.getDay());
+		System.out.println("d2 = " + d2.getYear() + "/" + d2.getMonth() + "/" + d2.getDay());
+		System.out.println("d1 = " + d1.toString());
+		
+		Date d3 = new Date(2023, 11, 2);
+		System.out.println("오늘의 날짜는 " + d3.toString() + "입니다.");
+		//d3.increase100days();
+		d3.increaseDays(100); 
+		System.out.println("오늘 만난 사람과 100일은 " + d3.toString()+ "입니다.");
+		
+		Date d4 = new Date(2023, 11, 2);
+		d4.increaseDays(1000); 
+		System.out.println("오늘 만난 사람과 1000일은 " + d4.toString()+ "입니다.");
+	}
+
+}
