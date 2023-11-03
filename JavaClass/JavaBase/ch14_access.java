@@ -81,6 +81,23 @@ class Time{
 		return mSecond;
 	}
 	
+	//setter : instance variable의 값을 설정
+	public void setHour(int hour) {//아무 값을 집어넣지 못하게 유효성 체크 필요
+		if(hour >= 0 && hour <= 23) {//유효성 체크
+		mHour = hour;
+		}
+	}
+	public void setMinute(int minute) {//아무 값을 집어넣지 못하게 유효성 체크 필요
+		if(minute >= 0 && minute <= 59) {//유효성 체크
+			mMinute = minute;
+		}
+	}
+	public void setSecond(int second) {//아무 값을 집어넣지 못하게 유효성 체크 필요
+		if(second >= 0 && second <= 59) {//유효성 체크
+			mSecond = second;
+		}
+	}
+	
 	private int mHour = 0, mMinute = 0, mSecond = 0; //생성하면서 0으로 세팅
 }
 
@@ -92,10 +109,14 @@ public class _02_Time {
 		Time t2 = new Time(9, 18, 12);
 		Time t3 = new Time();
 		
+		//t3.mHour = 23;//error : private 멤버는 클래스 외부에서 접근 불가능
+		t3.setHour(23);//setter
+		t3.setMinute(45);//setter
+		
 		//System.out.println(t1.mHour + "시" + t1.mMinute + "분" + t1.mSecond + "초" );//private 멤버여서 꺼내올 수 없다.
 		System.out.println(t1.getHour() + "시" + t1.getMinute() + "분" + t1.getSecond() + "초" );
+		System.out.println(t2.getHour() + "시" + t2.getMinute() + "분" + t2.getSecond() + "초" );
+		System.out.println(t3.getHour() + "시" + t3.getMinute() + "분" + t3.getSecond() + "초" );
 	}
 
 }
-
-
