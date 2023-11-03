@@ -44,7 +44,7 @@ public class _01_AccessModifier {
 
 }
 
-2. getter, setter
+2. getter, setter, toString
 
 //시간 클래스
 class Time{
@@ -57,15 +57,23 @@ class Time{
 	}
 	
 	public Time(int hour, int minute, int second) {
-		if (hour >= 0 && hour <= 23) {
-			mHour = hour;
-		}
-		if (minute >= 0 && minute <= 59) {
-			mMinute = minute;
-		}
-		if (second >= 0 && second <= 59) {
-			mSecond = second;
-		}
+//		if (hour >= 0 && hour <= 23) {
+//			mHour = hour;
+//		}
+		setHour(hour);//메서드 호출
+		
+//		if (minute >= 0 && minute <= 59) {
+//			mMinute = minute;
+//		}
+		
+		setMinute(minute);//메서드 호출
+		
+//		if (second >= 0 && second <= 59) {
+//			mSecond = second;
+//		}
+		
+		setSecond(second);//메서드 호출
+		
 		System.out.println("2번 생성자");
 	}
 	//getter : instance variable의 값을 리턴(private를 접근하는 변수)
@@ -98,6 +106,10 @@ class Time{
 		}
 	}
 	
+	public String toString() {
+		return mHour + ":" + mMinute + ":" + mSecond;
+	}
+	
 	private int mHour = 0, mMinute = 0, mSecond = 0; //생성하면서 0으로 세팅
 }
 
@@ -108,6 +120,10 @@ public class _02_Time {
 		Time t1 = new Time(13, 23, 57);//인스턴스 생성
 		Time t2 = new Time(9, 18, 12);
 		Time t3 = new Time();
+		
+		System.out.println("t1 = " + t1.toString());
+		System.out.println("t2 = " + t1.toString());
+		System.out.println("t3 = " + t1.toString());
 		
 		//t3.mHour = 23;//error : private 멤버는 클래스 외부에서 접근 불가능
 		t3.setHour(23);//setter
