@@ -32,7 +32,8 @@ class Point{
 	public static int getCount() {
 		//mX = 10; // error : 정적 멤버 메서드에서 instance variable의 접근 불가능
 		//미리 할당된 메모리이기 때문에 새로 생성되는 변수는 사용할 수 없다.
-    //ex 이순신 장군은 우리에 대해 모른다.
+		//정적멤버는 정적멤버끼리 호출할 수 있다.
+   		//ex 이순신 장군은 우리에 대해 모른다.
 		return count;
 		
 	}
