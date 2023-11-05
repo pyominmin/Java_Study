@@ -81,3 +81,183 @@ public class _05_this_static {
 	}
 
 }
+
+1. 연습문제
+
+class Product{
+	public Product(){
+		count++;
+		mNum = count + 1199;
+	}
+	
+	public Product( String name , String where, int price) {
+		this.mPrice = price;
+		this.mName = name;
+		this.mWhere = where;
+		count++;
+		mNum = count + 1199;;
+	}
+
+	public static int getCount() {
+		return count;
+	}
+	
+	
+	//getter
+	public int getNum() {
+		return this.mNum;
+	}
+	
+	public int getPrice() {
+		return this.mPrice;
+	}
+	
+	public String getName() {
+		return this.mName;
+	}
+	
+	public String getWhere() {
+		return this.mWhere;
+	}
+	
+	
+	//setter
+	public void setNum(int num) {
+		this.mNum = num;
+	}
+	
+	public void setName(String name) {
+		this.mName = name;
+	}
+	
+	public void setWhere(String where) {
+		this.mWhere = where;
+	}
+	
+	public String toString() {
+		return mNum + ". " + mName +" " + mWhere + " " + mPrice + "원";
+	}
+	
+	private int mNum = 0, mPrice = 0;
+	private String mName = null, mWhere;
+	private static int count = 0;
+}
+
+
+public class _06_StaticH1 {
+
+	public static void main(String[] args) {
+		Product p1 = new Product("새우깡", "농심(주)", 1900);
+		Product p2 = new Product("빼뺴로", "롯데제과", 2200);
+		Product p3 = new Product("먹태깡", "농심(주)", 2500);
+		
+		System.out.println(p1.toString());
+		System.out.println(p2.toString());
+		System.out.println(p3.toString());
+		
+		System.out.println("출고 상품 : " + Product.getCount() + "건");
+
+	}
+
+}
+
+2.연습문제
+
+
+import java.util.Scanner;
+
+class DynamicIntArray{
+	public DynamicIntArray() {
+	}
+	
+	public DynamicIntArray(int size) {
+		this.mSize = size;
+		numbers = new int[size];
+	}
+	
+	public DynamicIntArray(int begin, int end) {
+		this.mBegin = begin;
+		this.mEnd = end;
+	}
+	
+	public void  randomize( int begin, int end) {
+		for(int i = 0; i < numbers.length; i++) {
+			numbers[i] = (int)(Math.random() * (begin - end +1)) + begin;
+ 		}
+	}
+	
+	public void display() {
+		for (int i = 0; i < numbers.length; i++) {
+			System.out.print(numbers[i] + " ");
+		}
+	}
+	
+	public int getSearchCount(int searchNum) {
+		for(int i = 0; i < mSize; i++) {
+			if(numbers[i] == searchNum) {
+				Count++;
+			}
+		}
+		return Count;
+	}
+	
+	
+	//getter
+	public int getSize() {
+		return this.mSize;
+	}
+	
+	public int getBegin() {
+		return this.getBegin();
+	}
+	
+	public int getEnd() {
+		return this.mEnd;
+	}
+	
+	//setter
+	
+	public void setSize(int size) {
+		this.mSize = size;
+	}
+	
+	public void setBegin(int begin) {
+		this.mBegin = begin;
+	}
+	
+	public void setEnd(int end) {
+		this.mEnd = end;
+	}
+	
+	private int mSize = 0, mBegin = 0, mEnd = 0;
+	private int[] numbers;
+	private int Count = 0;
+}
+
+public class _06_StaticH2 {
+	 public static void main(String[] args) {
+
+	Scanner in = new Scanner(System.in);
+	
+	System.out.print("int형 메모리의 크기 입력 : ");
+	int size = in.nextInt();
+    
+	DynamicIntArray d = new DynamicIntArray(size); //int형의 메모리를 size만큼 할당
+    
+	int begin, end;
+	System.out.println("랜덤 시작 수 입력 : ");
+	begin = in.nextInt();
+	
+	System.out.print("랜덤 끝 수 입력 : ");
+	end = in.nextInt();
+	
+    d.randomize(begin, end); //할당 된 int형의 메모리에 begin ~ end 범위의 랜덤 수 저장
+    d.display(); //배열에 저장 된 값 출력
+    
+    System.out.print("\n검색할 정수 입력 : ");
+    int searchNum = in.nextInt();
+    System.out.println("검색한 정수의 개수는 " + d.getSearchCount(searchNum) + "개 입니다.");        
+    
+    in.close();   
+}
+}
