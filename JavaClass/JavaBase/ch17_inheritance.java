@@ -65,7 +65,7 @@ class Student extends Human{//Human 클래스 상속
 		return mMajor;
 	}
 	
-	//getter
+	//setter
 	public void setStNo(String stNo) {
 		mStNo = stNo;
 	}
