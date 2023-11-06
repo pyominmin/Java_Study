@@ -1,5 +1,5 @@
 상속
-
+1.연습
 //Is - A상속 : 모든 학생(자식)은 사람(부모)이다.
 //----------------------------------------------------------------------------------//Human class
 class Human{
@@ -93,6 +93,126 @@ public class _01_Inheritance {
 		
 		s2.showStudentInfo();
 		s3.showStudentInfo();
+	}
+
+}
+
+2.연습
+
+class Date{
+	public Date() {
+		
+	}
+	public Date(int year, int month, int day) {
+		mYear = year;
+		mMonth = month;
+		mDay = day;
+	}
+	
+	public Date(Date other) {
+		//생성자에서 다른 생성자를 호출할 때 this로 호출할 수 있다.
+		this(other.mYear, other.mMonth, other.mDay);//this를 이용한 생성자 호출
+//		mYear = other.year;
+//		mMonth = other.month;
+//		mDay = other.day;
+	}
+	
+	//getter
+	public int getYear() {
+		return mYear;
+	}
+	
+	public int getMonth() {
+		return mMonth;
+	}
+	public int getDay() {
+		return mDay;
+	}
+	
+	//setter
+	public void setYear(int year) {
+		mYear = year;
+	}
+	
+	public void setMonth(int month) {
+		mMonth = month;
+	}
+	
+	public void setDay(int day) {
+		mDay = day;
+	}
+
+	private int mYear = 1900, mMonth = 1, mDay = 1;
+	//-----------------------------------------------------------------------//
+}
+	class Product extends Date{
+		public Product() {
+			super();
+		}
+		
+		public Product(String name, String where, int price, int year, int month, int day) {
+			super(year, month, day);
+			this.mName = name;
+			this.mWhere = where;
+			this.mPrice = price;
+		}
+	
+		public Product(Product ref) {
+			super(ref);
+			this.mName = ref.mName;
+			this.mWhere = ref.mWhere;
+			this.mPrice = ref.mPrice;
+		}
+		
+		//getter
+		public String getName() {
+			return mName;
+		}
+		public String getWhere() {
+			return mWhere;
+		}
+		public int getPrice() {
+			return mPrice;
+		}
+		
+		//setter
+		public void setName(String name) {
+			mName = name;
+		}
+		public void setWhere(String where) {
+			mWhere = where;
+		}
+		public void setPrice(int price) {
+			mPrice = price;
+		}
+		
+		public void showProductInfo() {
+			System.out.println("상품명: " + mName);
+			System.out.println("제조사: " + mWhere);
+			System.out.println("가격: " + mPrice + "원");
+			System.out.println("제조일자: " + getYear() + "년 " + getMonth() + "월" + getDay() + "일");
+			System.out.println("");
+		}
+		
+		
+		private String mName = null, mWhere = null;
+		private int mPrice = 0;
+	}
+	
+	
+
+
+public class _02_product {
+
+	public static void main(String[] args) {
+		Product p1 = new Product("새우깡", "농심", 1200, 2008, 2, 4); //객체생성    
+		Product p2 = new Product("먹태깡", "농심", 1800, 2012, 1, 14); //객체생성    
+		Product p3 = new Product(p2); //객체생성    
+
+		p1.showProductInfo();	    
+		p2.showProductInfo();	    
+		p3.showProductInfo();
+
 	}
 
 }
