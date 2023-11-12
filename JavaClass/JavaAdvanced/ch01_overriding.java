@@ -147,3 +147,97 @@ public class _02_Polymorphism {
 }
 
 3. overriding
+
+import java.util.Scanner;
+
+class Animal{
+	public void walk(){
+		System.out.println("[부모] 네발로 걷는다.");
+	}
+	
+	
+	public void speak() {
+		System.out.println("[부모] 다양한 동물의 울음 소리를 여기서 출력한다.");
+	}
+}
+	//--------------------------------------------------------//Dog class
+	class Dog extends Animal{
+		@Override//부모의 기능은 무시되고 자식의 기능으로 수행된다.
+		public void speak() {
+			System.out.println("[override] 멍멍!!!");
+		}
+	}
+	//--------------------------------------------------------//cat class
+	class Cat extends Animal{
+		@Override
+		public void speak() {
+			System.out.println("[override] 야옹!!!");
+		}
+	}
+	//--------------------------------------------------------//pig class
+	class Pig extends Animal{
+		@Override
+		public void speak() {
+			System.out.println("[override] 꿀꿀!!!");
+			}
+		}
+		//--------------------------------------------------------//duck class
+	class Duck extends Animal{
+			@Override
+			public void walk(){
+				System.out.println("[부모] 두발로 걷는다.");
+			}
+			@Override
+			public void speak() {
+				System.out.println("[override] 꽥꽥!!!");
+			}
+		}
+		
+//-------------------------------------------------------------//main
+public class _03_Overriding {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		Animal ani = null;//부모의 참조형 변수
+		while (true) {
+			System.out.println("\n\n\t\t ***동물농장*** \n\n");
+			System.out.println("1. Dog    2. Cat    3.Pig    4. Duck    0.Terminate");
+			System.out.print("choice : ");
+			int choice = in.nextInt();
+
+			switch (choice) {
+			case 1:
+				ani = new Dog();// 인스턴스 생성
+				//ani.walk();
+				//ani.speak();
+				break;
+			case 2:
+				ani = new Cat();
+				//ani.walk();
+				//ani.speak();
+				break;
+			case 3:
+				ani = new Pig();
+				//ani.walk();
+				//ani.speak();
+				break;
+			case 4:
+				ani = new Duck();
+				//ani.walk();
+				//ani.speak();
+				break;
+			case 0:
+				in.close();// Scanner 리소스 반환
+				return;// 종료
+			default:
+				continue;
+			}
+			//다형성 : polymorphism
+			ani.walk();
+			ani.speak();
+		}
+
+	}
+
+}
