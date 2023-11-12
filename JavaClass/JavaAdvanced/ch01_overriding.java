@@ -53,3 +53,5 @@ public class _01_Reference {
 }
 
 2. Polymorphism
+//부모 클래스의 참조 변수로 자식 인스턴스를 참조할 수 있다.
+	
