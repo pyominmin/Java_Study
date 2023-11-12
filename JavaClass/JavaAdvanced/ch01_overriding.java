@@ -153,6 +153,7 @@ import java.util.Scanner;
 
 //추상클래스 : 추상 메서드를 한 개 이상 포함한 클래스를 말한다.
 //인스턴스 생성이 불가능하다.(미 완성된 클래스이기 때문이다. => Animal ani = new Animal();//불가
+//추상 클래스는 오직 자식을 위해서만 존재하는 클래스다.
 abstract class Animal{
 	public void walk(){
 		System.out.println("[부모] 네발로 걷는다.");
