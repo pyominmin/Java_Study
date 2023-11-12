@@ -148,17 +148,20 @@ public class _02_Polymorphism {
 
 3. overriding
 
+
 import java.util.Scanner;
 
-class Animal{
+//추상클래스 : 추상 메서드를 한 개 이상 포함한 클래스를 말한다.
+//인스턴스 생성이 불가능하다.(미 완성된 클래스이기 때문이다. => Animal ani = new Animal();//불가
+abstract class Animal{
 	public void walk(){
 		System.out.println("[부모] 네발로 걷는다.");
 	}
 	
+	//자식 클래스에서 반드시 오버라이딩 해야한다.
+	abstract public void speak(); //추상 메서드 : 정의부가 없이 선언부만 존재하는 메서드
+		//System.out.println("[부모] 다양한 동물의 울음 소리를 여기서 출력한다.");
 	
-	public void speak() {
-		System.out.println("[부모] 다양한 동물의 울음 소리를 여기서 출력한다.");
-	}
 }
 	//--------------------------------------------------------//Dog class
 	class Dog extends Animal{
@@ -233,7 +236,8 @@ public class _03_Overriding {
 			default:
 				continue;
 			}
-			//다형성 : polymorphism
+			//조금만 알 수록 좋다.
+			//다형성 : polymorphism : 한 개의 명령으로 다양한 기능을 수행할 수 있도록 한다.
 			ani.walk();
 			ani.speak();
 		}
