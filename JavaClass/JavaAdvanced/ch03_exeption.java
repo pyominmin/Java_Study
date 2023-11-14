@@ -7,3 +7,29 @@
 논리적 에러 : 컴파일되고 실행되긴 하지만, 프로그램의 의도와 다르게 동작하는 에러로 개발자의 논리적인 오류로 인해 발생
 
 
+ 1. Arithmetic Exception
+  
+import java.util.Scanner;
+//import java.lang.*;
+
+
+public class _01_Exeption {
+
+	public static void main(String[] args) {
+		//Arithmetic Exception
+		
+		Scanner in = new Scanner(System.in);
+		System.out.print("나눗셈을 할 두 수 입력(공백 구분) : ");
+		int n1 = in.nextInt();
+		int n2 = in.nextInt();
+		in.close();
+		
+		System.out.println("나눗셈의 몫은 " + n1 / n2 + "입니다.");
+
+	}
+
+}
+0으로 나누었을 때
+ java.lang.ArithmeticException: / by zero 오류가 노출됨.
+
+2.
