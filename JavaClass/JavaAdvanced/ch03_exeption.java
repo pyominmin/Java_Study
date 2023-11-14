@@ -171,10 +171,17 @@ class IntArray{
 		System.out.println();
 	}
 	public void setAt(int index, int value) {
-		if(index < 0 || index >= 5) {//범위를 벗어난 인덱스가 들어올 경우
+		if(index < 0 || index >= capacity) {//범위를 벗어난 인덱스가 들어올 경우
 			throw new ArrayIndexOutOfBoundsException("배열의 범위를 벗어났어!");
 		}
 		arr[index] = value;
+	}
+	
+	public int gatAt(int index) {
+		if(index < 0 || index >= capacity) {//범위를 벗어난 인덱스가 들어올 경우
+			throw new ArrayIndexOutOfBoundsException("배열의 범위를 벗어났어!");
+		}
+		return arr[index];
 	}
 	
 	private int[] arr;// = null
@@ -191,10 +198,18 @@ public class _03_Exception {
 		ia.setAt(3, 999);
 		ia.setAt(0, -78);
 		ia.setAt(5, 1234);
+		
 		}catch(ArrayIndexOutOfBoundsException ex) {
 			System.out.println(ex.getMessage());
 		}
 		ia.displayArray();
+		
+		try {
+		System.out.println("첫 번째 값 : " + ia.gatAt(0));
+		System.out.println("마지막 번째 값 : " + ia.gatAt(5));
+		}catch(ArrayIndexOutOfBoundsException ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 
 }
