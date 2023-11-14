@@ -156,8 +156,6 @@ public class _03_Exception {
 }
 //--------------------------------------------------------------------------------------------// throw로 묶어준다.
 
-//ArrayIndexOutOfBoundsException
-//int형 메모리를 할당하는 클래스
 class IntArray{
 	
 	public IntArray(int size) {
@@ -188,14 +186,15 @@ public class _03_Exception {
 	public static void main(String[] args) {
 		IntArray ia = new IntArray(5);//인스턴스 생성
 		
+		try {
 		//ia.arr[3] = 999;//err : private 멤버는 접근 불가능
 		ia.setAt(3, 999);
 		ia.setAt(0, -78);
 		ia.setAt(5, 1234);
-		
+		}catch(ArrayIndexOutOfBoundsException ex) {
+			System.out.println(ex.getMessage());
+		}
 		ia.displayArray();
 	}
 
 }
-
-
