@@ -131,3 +131,53 @@ public class _02_Interface {
 
 }
 2. 인터페이스(interface) 연습문제
+
+/*
+ * 인터페이스의 장점
+ * 1. 서로 관련이 없는 클래스들을 같은 명령으로 처리할 수 있다. => 표준화 가능
+ * 2. 독립적인 프로그래밍이 가능하다.
+ * 3. 재사용이 쉬워지고 따라서 개발 기간이 단축된다.
+ */
+
+interface Repairable{
+	/* public abstract */void repair();
+}
+
+class Phone implements Repairable{
+	@Override
+	public void repair() {
+		System.out.println("휴대폰 수리 완료");
+
+	}
+	public void call() {
+		System.out.println("휴대폰 통화 중...");
+	}
+	
+}
+
+
+class Vehicle implements Repairable{
+	@Override
+	public void repair() {
+		System.out.println("차량 수리 완료");
+	}
+	
+	public void drive() {
+		System.out.println("차량 운전 중");
+	}
+	
+}
+
+public class _03_Interface {
+
+	public static void main(String[] args) {
+		Vehicle ve = new Vehicle();
+		ve.repair();
+		ve.drive();
+
+		Phone ph = new Phone();
+		ph.repair();
+		ph.call();
+	}
+
+}
