@@ -74,3 +74,128 @@ public class _01_Exeption {
 
 }
 
+2. ArrayIndexOutOfBoundsException
+public class _02_Exception {
+
+	public static void main(String[] args) {
+		//ArrayIndexOutOfBoundsException
+		
+		int []a = {10, 20, 30, 40, 50};
+		
+		for(int i = 0; i <= 5; i++) {//배열을 넘었기 때문에 생긴 에러// (i < 5)배열이 4까지 있기 때문
+			System.out.println(a[i] + " ");
+		}
+		System.out.println();
+	}
+
+}
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException
+	
+try로 묶어준다.
+//--------------------------------------------------------------------------------------------// 
+
+
+public class _02_Exception {
+
+	public static void main(String[] args) {
+		// ArrayIndexOutOfBoundsException
+
+		int[] a = { 10, 20, 30, 40, 50 };
+
+		try {
+			for (int i = 0; i <= 5; i++) {
+				System.out.print(a[i] + " ");
+			}
+			System.out.println();
+		} catch (ArrayIndexOutOfBoundsException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+
+}
+
+3.ArrayIndexOutOfBoundsException
+
+//ArrayIndexOutOfBoundsException
+//int형 메모리를 할당하는 클래스
+class IntArray{
+	
+	public IntArray(int size) {
+		capacity = size;//배열의 최대 용량 저장
+		arr = new int [capacity];//배열을 할당
+		System.out.println("생성자 => 인스턴스 생성 시 호출");
+	}
+	
+	public void displayArray() {
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+	}
+	public void setAt(int index, int value) {
+		arr[index] = value;
+	}
+	
+	private int[] arr;// = null
+	private int capacity;//할당된 최대 크기
+}
+
+public class _03_Exception {
+
+	public static void main(String[] args) {
+		IntArray ia = new IntArray(5);//인스턴스 생성
+		
+		//ia.arr[3] = 999;//err : private 멤버는 접근 불가능
+		ia.setAt(3, 999);
+		ia.setAt(0, -78);
+		ia.setAt(5, 1234);
+		
+		ia.displayArray();
+	}
+
+}
+//--------------------------------------------------------------------------------------------// throw로 묶어준다.
+
+//ArrayIndexOutOfBoundsException
+//int형 메모리를 할당하는 클래스
+class IntArray{
+	
+	public IntArray(int size) {
+		capacity = size;//배열의 최대 용량 저장
+		arr = new int [capacity];//배열을 할당
+		System.out.println("생성자 => 인스턴스 생성 시 호출");
+	}
+	
+	public void displayArray() {
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+	}
+	public void setAt(int index, int value) {
+		if(index < 0 || index >= 5) {//범위를 벗어난 인덱스가 들어올 경우
+			throw new ArrayIndexOutOfBoundsException("배열의 범위를 벗어났어!");
+		}
+		arr[index] = value;
+	}
+	
+	private int[] arr;// = null
+	private int capacity;//할당된 최대 크기
+}
+
+public class _03_Exception {
+
+	public static void main(String[] args) {
+		IntArray ia = new IntArray(5);//인스턴스 생성
+		
+		//ia.arr[3] = 999;//err : private 멤버는 접근 불가능
+		ia.setAt(3, 999);
+		ia.setAt(0, -78);
+		ia.setAt(5, 1234);
+		
+		ia.displayArray();
+	}
+
+}
+
+
