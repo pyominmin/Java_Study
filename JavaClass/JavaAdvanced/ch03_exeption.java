@@ -26,10 +26,51 @@ public class _01_Exeption {
 		
 		System.out.println("나눗셈의 몫은 " + n1 / n2 + "입니다.");
 
+		System.out.println("**************************");
+		System.out.println("**************************");
+		System.out.println("**************************");
+		System.out.println("**************************");
 	}
 
 }
 0으로 나누었을 때
  java.lang.ArithmeticException: / by zero 오류가 노출됨.
 
-2.
+
+0으로 나눈 뒤 나머지 명령이라도 실행하기 위해 try로 묶어준다.
+//--------------------------------------------------------------------------------------------// 
+
+
+import java.util.Scanner;
+//import java.lang.*;
+
+
+public class _01_Exeption {
+
+	public static void main(String[] args) {
+		//Arithmetic Exception
+		
+		Scanner in = new Scanner(System.in);
+		System.out.print("나눗셈을 할 두 수 입력(공백 구분) : ");
+		
+		try {//오류가 발생할 수 있는 지역을 try로 묶는다.
+		int n1 = in.nextInt();
+		int n2 = in.nextInt();
+		System.out.println("나눗셈의 몫은 " + n1 / n2 + "입니다.");
+		}catch(ArithmeticException ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		System.out.println("**************************");
+		System.out.println("**************************");
+		System.out.println("**************************");
+		System.out.println("**************************");
+		System.out.println("**************************");
+		System.out.println("**************************");
+		System.out.println("**************************");
+		
+		in.close();
+	}
+
+}
+
