@@ -60,6 +60,64 @@ public class _01_Interface {
 	}
 
 }
+** 이론 **
+
+interface A{
+	void fun();
+}
+
+interface B extends A{//interface들의 간의 상속은 extends
+	void fun2();
+}
+
+interface C extends A, B{//interface는 다중 상속이 가능하다.
+  void fun3();
+}
+
+class Test implements A{
+	public void fun() {
+		
+	}
+}
+
+class Dummy implements B{
+	//B를 구현하는 클래스는 fun, fun2 메서드를 모두 구현해야 한다.
+	public void fun() {
+		
+	}
+	
+	public void fun2() {
+		
+	}
+}
+
+class DoSomething implements C{
+	//C를 구현하는 클래스는 fun, fun2, fun3 메서드를 모두 구현해야 한다.
+	public void fun() {
+		
+	}
+	
+	public void fun2() {
+		
+	}
+	public void fun3() {
+		
+	}
+}
+
+
+public class _04_interface {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+
+
+
 
 1. 인터페이스(interface) 연습문제
 
