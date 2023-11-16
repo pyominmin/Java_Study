@@ -1,0 +1,52 @@
+wrapperclass
+/*
+ * 래퍼클래스(Wrapper) : 기본 자료형을 클래스로 정의한 후 객체로 사용할 수 있다.
+ * Boolean형과 Char타입을 제외하고는 모두 Number클래스를 상속 받았다.
+ * 자료형 => 클래스
+ * 
+ * byte => Byte
+ * short => Short
+ * int => Integer
+ * long => Long
+ * double => Double
+ * char => Character
+ * boolean => Boolean
+ * 		   => BigInteger
+ * 		   => BigDecimal
+ * 
+ */
+
+public class _01_Wrapper {
+
+	public static void main(String[] args) {
+		//int num = 88;
+		//Integer in = new Integer(88);//인스턴스 생성
+		Integer num = 88;//int -> Integer(로 쓰는걸 권장한다) => autoboxing
+		
+		System.out.println(Integer.MAX_VALUE);//정적멤버는 클래스명으로 접근 가능(인스턴스 생성 없이 사용 가능)
+		System.out.println(Integer.SIZE + "bits");
+		System.out.println(Integer.BYTES + "byts");
+		System.out.println(Integer.TYPE + "타입을 wrapper");
+		System.out.println();
+		
+		System.out.println(Double.MIN_VALUE);//클래스명으로 접근 가능(인스턴스 생성 없이 사용 가능)
+		System.out.println(Double.SIZE + "bits");
+		System.out.println(Double.BYTES + "byts");
+		System.out.println(Double.TYPE + "타입을 wrapper");
+		System.out.println();
+		
+		System.out.println(Character.SIZE + "bits");
+		System.out.println(Character.BYTES + "byts");
+		System.out.println(Character.TYPE + "타입을 wrapper");
+		System.out.println();
+		
+		int n = Integer.parseInt("1234");//문자열을 정수로 변환//리턴 타입이 int
+		System.out.println("문자열을 정수로 변환 후 연산 = " + (n * 100));
+		
+		int n2 = Integer.valueOf("1234");//문자열을 정수로 변환//리턴 타입이 Integer
+		System.out.println("문자열을 정수로 변환 후 연산 = " + (n2 * 100));
+
+	}
+
+}
+1. wrapperclass 연습
