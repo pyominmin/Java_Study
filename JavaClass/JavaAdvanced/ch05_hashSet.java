@@ -60,3 +60,48 @@ public class _02_GenerateLottoNumber {
 	}
 
 }
+
+2. 빙고판
+
+import java.util.HashSet;
+import java.util.Random;
+
+public class _03_GeneratorBingo {
+
+	private static void displayBingoBoard(int[][] bingo) {
+		System.out.println("\n\t*빙고판 출력*");
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+				System.out.print(bingo[i][j] + "\t");
+				
+			}
+			System.out.println();
+		}
+	}
+
+	private static void generatorBingoBoard(int[][] bingo) {
+		HashSet<Integer> hs = new HashSet<>();
+		Random random = new Random();
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				boolean isAdd;
+				int rad;
+				do {
+				rad = random.nextInt(50) + 1 ;//1 ~ 50
+				isAdd = hs.add(rad);//추가//add 메서드는 boolean형이다.
+				}while(isAdd == false);
+				
+				bingo[i][j] = rad;//중복되지 않은 값인 경우? 2차원 배열에 추가
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		int[][] bingo = new int [5][5];
+			
+		generatorBingoBoard(bingo);
+		displayBingoBoard(bingo);
+
+	}
+
+}
