@@ -11,7 +11,7 @@ Collection Framework
 Collection 인터페이스 : 모든 컬렉션 클래스의 루트 인터페이스로, 기본적인 컬렉션 동작을 정의한다. Map 인터페이스는 Collection 인터페이스를 구현하지 않았다.
 1. List 인터페이스 : 순서가 있는 데이터의 집합을 나타낸다. 중복을 허용한다.(ArrayList, LinkesList)
   ex) 대기자 명단
-2. Set 인터페이스 : 순서가 없는 고유한 요소의 집합을 나타낸다. 중복을 허용하지 않는다.(HashSet)
+2. Set 인터페이스 : 순서가 없는 고유한 요소의 집합을 나타낸다. 중복을 허용하지 않는다.(HashSet/ sortedSet - TreeSet)
   ex) 소수의 집합, 네발 동물의 집합, 두발 동물의 집합
 3. Map 인터페이스 : key-value 쌍의 집합을 나타낸다. 키는 중복될 수 없으며, value는 중복될 수 있다.(LinkedHashMap, HashMap)
   ex) ID-PW, 지역번호, 우편번호 
