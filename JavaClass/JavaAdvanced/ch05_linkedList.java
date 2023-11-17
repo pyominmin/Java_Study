@@ -80,7 +80,27 @@ public class _01_LinkedList {
 		for(double d : num) {
 			System.out.print(d + " ");
 		}
+		System.out.println();
 		
+		//-------------------------------------------------------------//
+		LinkedList<Integer> list2 = new LinkedList<>();
+		
+		list2.add(1);
+		list2.add(2);
+		list2.add(3);
+		list2.add(4);
+		list2.add(5);
+		
+		
+		//첫 번째 요소 뺴내기
+		int extract = list2.peek();
+		System.out.println("첫 번쨰 요소 : " + extract);
+		System.out.println("LinkedList : " + list2);
+		
+		//첫 번째 요소 빼낸 후, 리스트에서 제거
+		int extract2 = list2.poll();
+		System.out.println("첫 번쨰 요소 : " + extract2);
+		System.out.println("LinkedList : " + list2);
 	}
 
 }
@@ -143,7 +163,8 @@ public class _02_Reverse {
 		System.out.println("Reversed LinkedList : " + list);
 
 	}
+	
 
 }
 
-1. 연습문제 
+2. 연습문제 
