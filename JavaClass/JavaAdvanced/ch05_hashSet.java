@@ -89,7 +89,7 @@ public class _03_GeneratorBingo {
 				do {
 				rad = random.nextInt(50) + 1 ;//1 ~ 50
 				isAdd = hs.add(rad);//추가//add 메서드는 boolean형이다.
-				}while(isAdd == false);
+				}while(!isAdd);//(isAdd == false);
 				
 				bingo[i][j] = rad;//중복되지 않은 값인 경우? 2차원 배열에 추가
 			}
