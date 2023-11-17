@@ -171,4 +171,42 @@ public class _02_Reverse {
 
 }
 
-2. 연습문제 
+2. 연습문제 순서 이동하기
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class _03_MovePlayer {
+
+	public static void movePlayers(LinkedList<String> list, int moves) {
+		//Player 이동횟수
+		for(int i = 0; i < moves; i++) {
+			//첫 번째 플레이어 뺴내기
+			String extract = list.poll();
+			//Player를 맨 뒤로 이동시킨다.
+			list.offer(extract);
+		}
+	}
+	
+	public static void main(String[] args) {
+		LinkedList<String> list = new LinkedList<>();
+		
+		list.add("Player 1");
+		list.add("Player 2");
+		list.add("Player 3");
+		list.add("Player 4");
+		list.add("Player 5");
+		
+		System.out.println("Player 순서 : " + list);
+		
+		Scanner in = new Scanner(System.in);
+		System.out.print("Player 순서를 몇번 움직이겠습니까?");
+		int moves = in.nextInt();
+		
+		in.close();
+		//Player 순서를 움직이는 메서드 호출
+		movePlayers(list, moves);
+		System.out.println(moves + "회 이동 후 Player 순서 : " + list);
+	}
+
+}
