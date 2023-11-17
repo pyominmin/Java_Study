@@ -132,4 +132,89 @@ public class _02_FindMax {
 
 }
 
-2. 
+2. 중복제거
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class _03_RemoveString {
+
+	public static ArrayList<String> removeDuplicates (ArrayList<String> list) {//unique가 ArrayList<String>타입이기 때문에
+		//중복이 제거 된 리스트를 생성 후 리턴
+		ArrayList<String> unique = new ArrayList<>();//ArrayList생성
+		
+		for(int i = 0; i < list.size(); i++) {
+			if(unique.contains(list.get(i)) == false){//기존에 저장되지 않은 문자열만 //contains : ArrayList에 객체가 존재하는 경우 true
+			unique.add(list.get(i));//unique에 추가
+			}
+		}
+		return unique;
+	}
+	
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+		ArrayList<String> arr = new ArrayList<>();//리스트를 만들고 싶어서 ArrayList 생성
+		
+		
+		System.out.println("문자열을 입력하세요. 종료하려면 빈 문자열을 입력하세요.");
+		while(true) {
+			System.out.print("문자열 입력 : ");
+			String str = in.nextLine();
+			arr.add(str);
+			
+			if(str.isEmpty()){//문자열이 없다면?? true
+				break;
+			}
+		}
+		in.close();
+		
+		System.out.println("ArrayList : " + arr);
+		ArrayList<String> unique = removeDuplicates(arr);//중복된 문자열이 있는 경우 중복된 문자열을 제거 후 새로운 리스트 생성
+		System.out.println("ArrayList(중복제거) : " + unique);
+	}
+
+}
+
+3. 홀수 리스트
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class NumList {
+
+	public static ArrayList<Integer> removeEvenNumber(ArrayList<Integer>list){
+		ArrayList<Integer> unique = new ArrayList<>();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i) % 2 == 1) {
+				unique.add(list.get(i));
+			}
+		}
+		return unique;
+	}
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		ArrayList<Integer>arr = new ArrayList<>();//ArrayList 생성
+		
+		System.out.println("정수를 입력하세요. 종료하려면 0을 입력하세요.");
+		while(true) {
+			System.out.print("입력 : ");
+			int num = in.nextInt();
+			arr.add(num);
+			
+			if(num == 0){
+				break;
+			}
+		}
+		
+		in.close();
+
+		System.out.println("입력된 정수 리스트 : " + arr);
+		ArrayList<Integer> unique = removeEvenNumber(arr);
+		System.out.println("홀수 리스트 : " + unique);
+		
+	}
+
+}
+​
