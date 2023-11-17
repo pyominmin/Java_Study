@@ -91,7 +91,7 @@ public class _01_LinkedList {
 		list2.add(4);
 		list2.add(5);
 		
-		
+		//JDK.5부터 사용가능
 		//첫 번째 요소 뺴내기
 		int extract = list2.peek();
 		System.out.println("첫 번쨰 요소 : " + extract);
