@@ -91,4 +91,45 @@ public class _01_ArrayList {
 
 }
 
-1. 연습문제
+1. 연습문제 최댓값 찾기
+import java.util.ArrayList;
+import java.util.Scanner;
+//import java.util.*;
+
+public class _02_FindMax {
+
+	public static int findMax(ArrayList<Integer> list) {
+		//ArrayList에서 최댓값을 구해 리턴하는 메서드
+		int max = list.get(0);//1. ArrayList에서 첫 번째 값을 최대값으로 설정
+		
+		for(int i = 1; i < list.size(); i++) {
+			if(max < list.get(i)) {
+				max = list.get(i);
+			}
+		}
+		return max;
+	}
+	
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		ArrayList<Integer> arr = new ArrayList<>();//ArrayList생성(기본 크기10)
+		System.out.println("정수 5개를 입력하세요");
+		for(int i = 0; i < 5; i++) {
+			System.out.print("입력 : ");
+			int num = in.nextInt();
+			arr.add(num);//맨뒤 추가
+		}
+		
+		int maxValue = findMax(arr);//최댓값을 구하는 메서드 호출
+		System.out.println("최댓값 : " + maxValue);
+		
+		
+		in.close();
+
+	}
+
+}
+
+2. 
