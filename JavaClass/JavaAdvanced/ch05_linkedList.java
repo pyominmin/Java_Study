@@ -101,6 +101,10 @@ public class _01_LinkedList {
 		int extract2 = list2.poll();
 		System.out.println("첫 번쨰 요소 : " + extract2);
 		System.out.println("LinkedList : " + list2);
+
+		//맨 뒤에 요소 추가 
+		list2.offer(extract2);
+		System.out.println("LinkedList : " + list2);
 	}
 
 }
