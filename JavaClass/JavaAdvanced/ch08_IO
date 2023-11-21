@@ -1,0 +1,28 @@
+자바에서의 I/O (Input/Output)는 데이터의 입력과 출력을 다루는 기능을 말한다. I/O 스트림은 데이터를 읽고 쓰는 데 사용되며, 입출력은 바이트 기반 스트림과 문자 기반 스트림으로 나눌 수 있다. 바이트 기반 스트림은 데이터를 바이트로 처리하고, 문자 기반 스트림은 문자로 처리한다.
+
+
+가장 기본적인 I/O 스트림은 InputStream과 OutputStream 클래스다. 이 클래스들은 바이트 기반의 데이터를 읽고 쓰는데 사용된다. 또한, Reader와 Writer 클래스는 문자 기반의 데이터를 처리하는데 사용된다.
+
+자바에서 I/O 스트림은 크게 두 가지로 나눌 수 있다.
+
+1. 바이트 기반 스트림 (Byte Streams)
+
+- 바이트 기반 스트림은 InputStream와 OutputStream 클래스를 기반으로 한다.
+
+- FileInputStream, FileOutputStream : 파일에서 데이터를 읽고 쓰는 데 사용된다.
+
+- BufferedInputStream, BufferedOutputStream : 버퍼링을 통해 입출력 성능을 향상시킬 수 있다.
+
+- DataInputStream 및 DataOutputStream : 기본 데이터 타입을 바이트 단위로 입출력할 수 있는 기능을 제공한다.
+
+​
+
+2. 문자 기반 스트림 (Character Streams)
+
+- 문자 기반 스트림은 Reader 및 Writer 클래스를 기반으로 한다.
+
+- FileReader, FileWriter : 파일에서 문자 데이터를 읽고 쓰는 데 사용된다.
+
+- BufferedReader, BufferedWriter : 버퍼를 활용하여 문자 데이터를 효율적으로 처리할 수 있다.
+
+입출력 예외 처리를 위해 IOException이라는 예외가 사용되며, 일반적으로 try-catch 블록 내에서 I/O 작업을 수행한다.
