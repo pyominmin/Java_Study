@@ -1,7 +1,8 @@
 *TreeSet
 
 import java.util.TreeSet;
-
+//first(): TreeSet에서 첫 번째(가장 작은) 요소를 반환합니다.
+//last(): TreeSet에서 마지막(가장 큰) 요소를 반환합니다.
 /*
  * TreeSet : Set인터페이스를 구현했다.(중복x, 순서x)
  * 내부적으로 Red - Black Tree로 구현되어 있다.(균형잡힌 Binary Search Tree, BST)
@@ -59,4 +60,42 @@ public class _02_GeneratorLotto {
 
 }
 
-2.
+2. 문자열 입력
+
+import java.util.Scanner;
+import java.util.TreeSet;
+
+//first(): TreeSet에서 첫 번째(가장 작은) 요소를 반환합니다.
+//last(): TreeSet에서 마지막(가장 큰) 요소를 반환합니다.
+//그러므로 범위 기반으로 출력해야 한다.
+public class _03_StringSort {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		TreeSet<String> ts = new TreeSet<>();
+
+		System.out.println("문자열 입력(종료하려면 \"exit\" 누르면 종료)");
+
+		while (true) {
+			System.out.print("문자열 입력 : ");
+			String str = in.nextLine();
+
+			// if(str == "exit") {//주소가 같다
+			// if(str.equals("exit")) {
+			if (str.equalsIgnoreCase("exit")) {// 대소문자 구별x
+				break;// 반복문 탈출
+			}
+			//저장 하기 전에 exit는 나가게 한다.
+			ts.add(str);// 정렬된 상태 유지, 중복 문자열은 추가하지 않는다.
+
+		}
+		in.close();
+
+		System.out.println("\n\n*문자열 출력(오름차순 정렬)*\n");
+		for (String str : ts) {//범위 기반으로 출력해야 한다.
+			System.out.println(str);
+		}
+	}
+}
+
+3. 과일 가격순 정렬
