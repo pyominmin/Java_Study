@@ -98,3 +98,60 @@ public class _03_StringSort {
 	}
 }
 
+3. 과일 가격순 정렬(Comparable)
+
+import java.util.TreeSet;
+
+class Fruit implements Comparable<Fruit>{
+	
+	public Fruit(String name, int price){
+		mName = name;
+		mPrice = price;
+	}
+	
+	@Override//object class
+	public String toString() {
+		return mName + " => " + mPrice + "원";//문자열을 만들어서 리턴
+	}
+	
+	@Override//compareble 인터페이스//정렬기준
+	public int compareTo(Fruit other) {
+		if(mPrice == other.mPrice) {//값이 같으면 0
+			return 0;
+		}else if(mPrice < other.mPrice){//비교값이 크면 음수
+			return -1;
+		}else {//비교값이 작다면 양수
+			return 1;
+		}
+	}
+	
+	private String mName;
+	private int mPrice;
+}
+
+public class _04_FruitPriceSort {
+
+	public static void main(String[] args) {
+//		Fruit f1 = new Fruit("사과", 1200);
+//		Fruit f2 = new Fruit("배", 2300);
+//		Fruit f3 = new Fruit("귤", 600);
+//		Fruit f4 = new Fruit("딸기", 3600);
+		
+		TreeSet<Fruit> ts = new TreeSet<>();
+//		ts.add(f1);
+//		ts.add(f2);
+//		ts.add(f3);
+//		ts.add(f4);
+		ts.add(new Fruit("사과", 1200));
+		ts.add(new Fruit("배", 2300));
+		ts.add(new Fruit("귤", 600));
+		ts.add(new Fruit("딸기", 3600));
+		
+		System.out.println("TreeSet : " + ts);
+		System.out.println("\n* 가격 순 과일 메뉴 출력*");
+		for(Fruit fru : ts) {
+			System.out.println(fru);
+		}
+	}
+
+}
