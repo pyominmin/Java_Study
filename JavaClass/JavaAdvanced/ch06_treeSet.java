@@ -155,3 +155,82 @@ public class _04_FruitPriceSort {
 	}
 
 }
+
+4. 성적순
+
+import java.util.Scanner;
+import java.util.TreeSet;
+
+class Student implements Comparable<Student>{
+	public Student(String name, int score) {
+		mName = name;
+		mScore = score;
+	}
+	
+	@Override
+	public String toString() {
+		return mName + " " + mScore;
+	}
+	
+	@Override
+	public int compareTo(Student other) {
+		if(mScore == other.mScore) {
+			return 0;
+		}else if(mScore < other.mScore) {
+			return -1;
+		}else {
+			return 1;
+		}
+	}
+	
+	public String getName() {
+		return mName;
+	}
+	
+	public int getScore() {
+		return mScore;
+	}
+	
+	private String mName;
+	private int mScore;
+}
+
+public class _05_H1 {
+
+	public static void main(String[] args) {
+		TreeSet<Student> st = new TreeSet<>();
+		Scanner in = new Scanner(System.in);
+		String name;
+		int score;
+
+		while (true) {
+			System.out.print("학생 이름과 성적을 입력 하세요.(공백 구분) : ");
+			name = in.next();
+			score = in.nextInt();
+			
+			if (score < 0 || score > 100) {
+				System.out.println("입력을 종료합니다.");
+				break;
+			}
+			
+			st.add(new Student(name, score));
+		}
+
+		System.out.println("/n[성적순 출력]");
+		for (Student stu : st) {
+			System.out.println(stu);
+		}
+
+		System.out.println("/n몇 점 이상인 점수만 출력 하시겠습니까?");
+		int num = in.nextInt();
+
+		System.out.println("/n[" + num + "점 이상인 학생 출력]");
+		for (Student stu : st) {
+			if (stu.getScore() >= num) {
+				System.out.println(stu);
+			}
+
+		}
+
+	}
+}
