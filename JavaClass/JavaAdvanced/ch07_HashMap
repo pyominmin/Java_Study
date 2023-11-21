@@ -1,2 +1,0 @@
-//Hash Map과 HashSet은 Hashtable이용 - 검색속도 최고(중복x, 순서x)
-//TreeSet과 TreeMap은 R-BT이용 - 항상 정렬된 상태를 유지(범위 검색은 이게 빠르다)
