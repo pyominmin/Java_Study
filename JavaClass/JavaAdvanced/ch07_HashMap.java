@@ -1,4 +1,5 @@
-
+HashMap
+1. 존재하는 회원
 import java.util.HashMap;
 
 public class _01_HashMap {
@@ -30,7 +31,7 @@ public class _01_HashMap {
 		
 }
 
-1.아이디 비밀번호
+2.아이디 비밀번호
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -60,6 +61,48 @@ public class H1 {
 			in.close();
 
 			
+	}
+
+}
+
+3. 영어 퀴즈
+
+
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Set;
+
+public class _03_WordQuiz {
+
+	public static void main(String[] args) {
+		HashMap<String, String> hm = new HashMap<>();
+		Scanner in = new Scanner(System.in);
+		
+		hm.put("사과", "apple");
+		hm.put("바나나", "banana");
+		hm.put("오렌지", "orange");
+		hm.put("딸기", "strawberry");
+		hm.put("배", "pear");
+		
+		Set<String> keySet = hm.keySet();//HashMap에서 key값을 담은 집합
+		System.out.println(keySet);
+		
+		int correct = 0;
+		for(String key : keySet) {
+			System.out.print("\n" + key + "을(를) 영어 단어로 하면?");
+			String answer = in.nextLine();
+			
+			//if(answer == hm.get(key)) {
+			if(answer.equals(hm.get(key))) {
+				++correct;//정답의 개수 증가
+				System.out.println("정답입니다.");
+			}else {
+				System.out.println("오답입니다.");
+			}
+		}
+		
+		
+		System.out.println("총 " + hm.size() + "문제 중 정답 [" + correct + "]개");
 	}
 
 }
