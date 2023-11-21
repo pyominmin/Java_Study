@@ -179,4 +179,44 @@ public class _04_AssociateQuiz {
 
 }
 
-	
+6.rank
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Set;
+
+public class _05_Average {
+
+	public static void main(String[] args) {
+		HashMap<String, Double> hm = new HashMap<>();
+		
+		hm.put("홍길동" , 78.54);
+		hm.put("이순신" , 100.0);
+		hm.put("장보고" , 45.12);
+		hm.put("유관순" , 91.2124);
+		hm.put("윤동주" , 88.51);
+		
+		Set<String> name = hm.keySet();
+		Collection<Double> avg = hm.values();
+		double sum = 0;
+		for(double total : avg) {
+			 sum += total;
+		}
+		sum = sum/ avg.size();
+		System.out.printf("반 평균은 %.2f 입니다", sum);
+		System.out.println();
+		
+		
+		String top = null;
+		double max = Collections.max(avg);
+		for(String rank : name) {
+			if(hm.get(rank).equals(max)) {
+				top = rank;
+			}
+		}
+			System.out.println("학급 인원수는 [" + avg.size() +"] 이며 1등은 [" + top +"] 입니다.");
+		
+	}
+
+}
