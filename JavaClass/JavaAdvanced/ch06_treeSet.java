@@ -98,4 +98,3 @@ public class _03_StringSort {
 	}
 }
 
-3. 과일 가격순 정렬
