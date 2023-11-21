@@ -216,12 +216,12 @@ public class _05_H1 {
 			st.add(new Student(name, score));
 		}
 
-		System.out.println("/n[성적순 출력]");
+		System.out.println("\n[성적순 출력]");
 		for (Student stu : st) {
 			System.out.println(stu);
 		}
 
-		System.out.println("/n몇 점 이상인 점수만 출력 하시겠습니까?");
+		System.out.println("\n몇 점 이상인 점수만 출력 하시겠습니까?");
 		int num = in.nextInt();
 
 		System.out.println("/n[" + num + "점 이상인 학생 출력]");
