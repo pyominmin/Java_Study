@@ -106,3 +106,77 @@ public class _03_WordQuiz {
 	}
 
 }
+
+4. key - value 타입 차이
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Set;
+
+public class _03_WordQuiz {
+
+	public static void main(String[] args) {
+		HashMap<String, String> hm = new HashMap<>();
+		Scanner in = new Scanner(System.in);
+		
+		hm.put("사과", "apple");
+		hm.put("바나나", "banana");
+		hm.put("오렌지", "orange");
+		hm.put("딸기", "strawberry");
+		hm.put("배", "pear");
+		
+		Set<String> keySet = hm.keySet();//HashMap에서 key값을 담은 집합
+		System.out.println(keySet);
+		
+		Collection<String> valueCol = hm.values();//타입이 다르다.
+		System.out.println(valueCol);
+
+5. 연상퀴즈
+	
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Set;
+
+public class _04_AssociateQuiz {
+
+	public static void main(String[] args) {
+		HashMap<String, String> hm = new HashMap<>();
+		Scanner in = new Scanner(System.in);
+		
+		hm.put("바늘", "실");
+		hm.put("라면", "김치");
+		hm.put("피노키오", "제페토");
+		hm.put("거짓말", "빅뱅");
+		hm.put("연필", "지우개");
+		hm.put("책상", "의자");
+		hm.put("겨울", "고구마");
+		hm.put("봄", "여름");
+		hm.put("제주도", "귤");
+		hm.put("휴지", "나무");
+		hm.put("칫솔", "치약");
+
+		System.out.println("당신이 생각하는 연상 단어를 ㅇ비력하세요(총 문제 수 " + hm.size() +"개)");
+		
+		int correct = 0;
+		Set<String> keySet = hm.keySet();//HashMap에서 key값 얻어옴
+		
+		for(String key : keySet) {
+			System.out.print("\n" + key + "=> ");
+			String answer = in.nextLine();
+			
+			if(answer.equals(hm.get(key))) {//문자열이 같냐??
+				++correct;
+				System.out.println("[정답]입니다.");
+			}else {
+				System.out.println("[오답]입니다.");
+				System.out.println("정답은 [" + hm.get(key) + "] 입니다.");
+			}
+		}
+		System.out.println("정답 " + correct + "개");
+		in.close();
+	}
+
+}
+
+	
