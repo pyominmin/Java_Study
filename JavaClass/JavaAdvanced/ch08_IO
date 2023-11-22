@@ -26,3 +26,6 @@
 - BufferedReader, BufferedWriter : 버퍼를 활용하여 문자 데이터를 효율적으로 처리할 수 있다.
 
 입출력 예외 처리를 위해 IOException이라는 예외가 사용되며, 일반적으로 try-catch 블록 내에서 I/O 작업을 수행한다.
+
+
+![image](https://github.com/pyominmin/Java_Study/assets/140521784/11433006-a7e8-401d-a4d6-ad85b49af882)
