@@ -182,3 +182,52 @@ public class _04_FileCopyBuffer {
 
 	}
 }
+
+4.보조 스트림 생성
+	
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+public class _04_FileCopyBuffer {
+
+	public static void main(String[] args) {
+
+		try {
+
+			FileInputStream fis = new FileInputStream("img.jpg");
+			FileOutputStream fos = new FileOutputStream("img(2).jpg");
+
+			// 성능 향상을 위한 보조 스트림을 생성
+			// 보조 스트림은 자체적으로 ㅇ비출력이 불가능하기 때문에 반드시 기반 클래스를 인수로 취한다.
+			BufferedInputStream bis = new BufferedInputStream(fis);
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+
+			int byteLen;
+			byte[] buffer = new byte[8192];
+			while ((byteLen = bis.read(buffer)) != -1) { // 1024byte 읽어와서 저장
+				System.out.print("@");
+				bos.write(buffer, 0, byteLen);// 1024byte기록
+			}
+
+			System.out.println("파일 복사가 완료됐습니다.");
+			//보조 스트림 생성 시 기반 클래스는 닫을 필요가 없다.
+			//보조 스트림에서 내부적으로 호출되기 때문이다.
+			// fis.close();
+			// fos.close();
+			bis.close();
+			bos.close();
+
+		} catch (FileNotFoundException e) {
+			// System.out.println(e.toString());
+			System.out.println(e.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+}
+
+
