@@ -100,3 +100,67 @@ public class _10_FileWriter {
 	}
 
 }
+
+3. split
+
+public class _12_Split {
+
+	public static void main(String[] args) {
+		String num = "010-888-9999";
+		
+		String[] part = num.split("-");
+		System.out.println("전화번호 앞자리" + part[0]);
+		System.out.println("전화번호 가운데 자리" + part[1]);
+		System.out.println("전화번호 뒷자리" + part[2]);
+		
+		String time = "09:12:34";
+		String[] timePart = time.split(":");
+		System.out.println(timePart[0] + "시 입니다.");
+		System.out.println(timePart[2] + "초 입니다.");
+	}
+
+}
+
+
+3-1.단어 개수세기
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class _11_LineWordCount {
+
+	private static int countwordLine(String line) {
+		//문자열이 생성되지 않았거나 빈 문자열인 경우 개수는 0개
+		if(line == null || line.isEmpty()) {
+			return 0;
+		}
+		
+		//String[] words = line.split(" ");//특정 기준으로 문자열을 구분
+		String[] words = line.split("\\s+");// \s : 공백 문자열// 여러 칸 공백도 하나로 친다.
+		return words.length;//배열의 크기를 리턴
+	}
+
+	public static void main(String[] args) {
+		try (FileReader fr = new FileReader("proverb.txt");
+				BufferedReader br = new BufferedReader(fr)){
+			
+			String line;
+			
+			//행 단위로 읽어 들여서 line에 저장
+			while((line = br.readLine()) != null){ //파일의 끝이 아니라면?
+				int wordCount = countwordLine(line); //한 문장에서 사용된 단어의 개수를 구하기
+				System.out.println(line + "(단어 수 : " + wordCount + "개)");
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
