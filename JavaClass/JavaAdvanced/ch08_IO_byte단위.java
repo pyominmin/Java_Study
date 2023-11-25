@@ -230,4 +230,43 @@ public class _04_FileCopyBuffer {
 	}
 }
 
+5. 예외발생
 
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class _06_AutoClose {
+
+	public static void main(String[] args) {
+		FileInputStream fis = null;
+		
+		int n = 1;
+		try {
+			fis = new FileInputStream("pigs.txt");
+			System.out.println("파일 스트림 연결 선공");
+			
+			System.out.println("@@@@@@@@@@");
+			System.out.println("##########");
+			System.out.println("**********");
+			
+			if(n == 1)
+			throw new IOException("실습을 위해 예외를 강제적으로 발생!!!!");
+			
+			//fis.close();
+			//System.out.println("리소스 반환 성공");
+		}catch(IOException e) {
+			System.out.println(e.getMessage());
+			
+		}finally {//예외가 발생하더라도 무조건 실행되는 명령
+			try {
+				fis.close();
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+			System.out.println("리소스 반환 성공");//리소스 반환은 무조건 이루어져야함
+		}
+
+	}
+
+}
