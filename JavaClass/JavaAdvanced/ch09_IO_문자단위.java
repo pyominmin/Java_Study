@@ -11,7 +11,7 @@ public class _08_FileReader {
 
 	public static void main(String[] args) {
 		//리소스 반환이 필요없다. close를 자동 호출
-		try(FileReader fr = new FileReader("proverb.txt");
+		try(FileReader fr = new FileReader("proverb.txt");//인스턴스를 여러개 생성 시 세미콜론으로 구분
 				BufferedReader br = new BufferedReader(fr)){//창고에서 마트로 라면 카트로 이동//성능 향상
 			//int ch;
 			//while((ch = fr.read()) != -1) {//한 글자씩 반복해서 출력해주겠다.//먼저 읽어들이고 -1에 닿으면 나오겠다.
