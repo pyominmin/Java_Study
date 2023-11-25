@@ -312,3 +312,36 @@ public class H1 {
 	}
 }
 
+7. 리소스 반환
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class _07_AutoClose {
+
+	public static void main(String[] args) {	
+		int n = 1;
+		//리소스를(파일스트림, 네트워크 연결) 자동으로 닫아준다. => close가 필요 없다. (Java 1.7부터 가능)
+		try(FileInputStream fis = new FileInputStream("pigs.txt")){
+			
+			System.out.println("파일 스트림 연결 선공");
+			
+			if(n == 1)
+			throw new IOException("실습을 위해 예외를 강제적으로 발생!!!!");
+			
+			System.out.println("@@@@@@@@@@");
+			System.out.println("##########");
+			System.out.println("**********");
+			
+			//fis.close();
+			//System.out.println("리소스 반환 성공");
+		}catch(IOException e) {
+			System.out.println(e.getMessage());
+			
+		}
+		
+
+	}
+
+}
+
