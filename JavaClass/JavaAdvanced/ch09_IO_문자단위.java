@@ -62,3 +62,41 @@ public class _09_FileWriter {
 
 }
 2-1 FileWriter
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class _10_FileWriter {
+
+	public static void main(String[] args) {
+		
+		try (FileWriter fw = new FileWriter("contens.txt");
+				BufferedWriter bw = new BufferedWriter(fw);
+				Scanner in = new Scanner(System.in)){
+			
+			System.out.println("빈 문자열을 입력할 때까지 문자열을 입력하세요(엔터 두 번 입력 시 종료됩니다.)");
+			String content;
+			
+			while(true) {
+				content = in.nextLine();
+				
+				if(content.isEmpty()){
+					break;
+				}
+				
+				bw.write(content);
+				bw.newLine();//bw.write("\n");
+			}
+			
+			System.out.println("입력이 완료 됐습니다.\ncontens.txt 파일에 내용이 저장됩니다.");
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+
+}
