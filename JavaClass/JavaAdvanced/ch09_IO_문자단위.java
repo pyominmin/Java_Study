@@ -138,6 +138,7 @@ public class _11_LineWordCount {
 		}
 		
 		//String[] words = line.split(" ");//특정 기준으로 문자열을 구분
+		//정규식을 이용한 구분
 		String[] words = line.split("\\s+");// \s : 공백 문자열// 여러 칸 공백도 하나로 친다.
 		return words.length;//배열의 크기를 리턴
 	}
