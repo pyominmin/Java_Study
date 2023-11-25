@@ -165,3 +165,51 @@ public class _11_LineWordCount {
 	}
 
 }
+3-2 단어 찾기
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class _13_WordSearch {
+
+	public static void main(String[] args) {
+		try (FileReader fr = new FileReader("meaning.txt");
+				BufferedReader br = new BufferedReader(fr);
+				Scanner in = new Scanner(System.in)) {
+
+			System.out.print("검색 할 영단어를 입력하세요 : ");
+			String userInput = in.nextLine();
+
+			boolean isSearch = false;
+			String line;
+			while ((line = br.readLine()) != null) {
+				// System.out.println(line);
+				// 공백 기준으로 나눌 때 최대 2개로
+				String[] parts = line.split("\\s+", 2);
+
+				// if(userInput == parts[0])//주소비교
+				if (userInput.equals(parts[0])) {
+					System.out.print("단어 : " + parts[0] + "=> 의미 : " + parts[1]);
+					isSearch = true;
+					break;
+				}
+
+			}
+
+			if (!isSearch) {
+				System.out.println("[" + userInput + "]에 대한 뜻은 찾을 수 없습니다.");
+			}
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+
+	}
+}
