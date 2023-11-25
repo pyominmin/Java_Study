@@ -270,3 +270,45 @@ public class _06_AutoClose {
 	}
 
 }
+
+6. 대문자 변경하기
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class H1 {
+
+	public static void main(String[] args) {
+		try {
+			FileInputStream fis = new FileInputStream("pigs.txt");
+			FileOutputStream fos = new FileOutputStream("change.txt");
+
+			System.out.println("pigs.txt 파일과 연결했습니다.");
+			int change;
+			char ch;
+
+			while ((change = fis.read()) != -1) {
+				ch = (char)change;
+				if (Character.isUpperCase(change)) {
+					ch = '_';
+				}
+				System.out.print(ch);
+				fos.write(ch);
+			}
+
+			fis.close();
+			fos.close();
+			System.out.println("리소스를 반환합니다.");
+
+		} catch (FileNotFoundException e) {
+			
+			System.out.println(e.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
+
