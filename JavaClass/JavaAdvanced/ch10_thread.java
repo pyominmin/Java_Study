@@ -241,7 +241,7 @@ public class _07_MultiThread {
 
 }
 
-7.
+7. MultiThread
 	
 import javax.swing.JOptionPane;
 
@@ -275,6 +275,46 @@ public class _08_MultiThread {
 		
 		String gender = JOptionPane.showInputDialog("성별을 입력하세요.");
 		System.out.println("성별 : " + gender);
+
+	}
+
+}
+
+8. MultiThread
+	
+import javax.swing.JOptionPane;
+
+class OddNumberThread extends Thread {
+	private int maxNumber;
+
+	public OddNumberThread(int num) {
+		maxNumber = num;
+	}
+
+	@Override
+	public void run() {
+		for (int i = 0; i <= maxNumber; i++) {
+			if (i % 2 != 0) {
+				System.out.println(i);
+			}
+		}
+	}
+	
+}
+
+public class _09_OddNumberThread {
+
+	public static void main(String[] args) {
+		
+		//다이얼로그 상자 표시
+		int maxNumber = Integer.parseInt(JOptionPane.showInputDialog("최대 숫자를 입력하세요: "));
+		
+		//스레드 시작
+		OddNumberThread OddNumberThread = new OddNumberThread(maxNumber);
+		OddNumberThread.start();//maxNumber보다 작거나 같은 수를 모두 출력
+		
+		//다이얼로그에서 입력 받은 정보 출력
+		System.out.println("입력받은 수" + maxNumber);
 
 	}
 
