@@ -125,3 +125,118 @@ public class _04_MultiThread {
 	}
 
 }
+
+4. MultiThread
+
+class PrintCharThread extends Thread{
+	PrintCharThread(char _ch, int _count){
+		ch = _ch;
+		count = _count;
+	}
+	@Override
+	public void run() {
+		//스레드가 처리 할 명령
+		for(int i = 0; i < count; i++) {
+			System.out.print(ch);
+		}
+		System.out.println("\nRun Time" + (System.currentTimeMillis() - _05_MultiThread.startTime));
+	}
+	
+	private char ch;
+	private int count;
+}
+
+public class _05_MultiThread {
+
+	static long startTime;//정적멤버
+	
+	public static void main(String[] args) {
+		startTime = System.currentTimeMillis();
+		PrintCharThread t1 = new PrintCharThread('*', 800);
+		PrintCharThread t2 = new PrintCharThread('@', 800);
+
+		t1.start();
+		t2.start();
+	}
+
+}
+
+5. MultiThread
+
+import javax.swing.JOptionPane;
+
+class PrintCharThread_02 extends Thread{
+	PrintCharThread_02(char _ch, int _count){
+		ch = _ch;
+		count = _count;
+	}
+	@Override
+	public void run() {
+		//스레드가 처리 할 명령
+		for(int i = 0; i < count; i++) {
+			System.out.print(ch);
+			try {
+				sleep(1000);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private char ch;
+	private int count;
+}
+
+public class _06_MultiThread {
+
+	public static void main(String[] args) {
+		PrintCharThread_02 th = new PrintCharThread_02('#', 30);
+		th.start();
+		
+		String input = JOptionPane.showInputDialog("스레드는 뭔가요?");//다이얼로그 박스 생성
+		System.out.println("입력 받은 내용은 " + input + "입니다.");
+	}
+
+}
+
+6. MultiThread
+
+import javax.swing.JOptionPane;
+
+class MultiThread_03 extends Thread{
+	private String threadData;
+	
+	public MultiThread_03(String data) {
+		threadData = data;
+	}
+	
+	@Override
+	public void run() {
+		for(int i = 0; i < 10; i++) {
+			System.out.println(threadData + "count = " + i);
+			try {
+				sleep(1000);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		System.out.println();
+	}
+}
+
+public class _07_MultiThread {
+
+	public static void main(String[] args) {
+		String input = JOptionPane.showInputDialog("스레드로 전달 할 데이터를 입력 하세요.");
+		System.out.println("입력 데이터: " + input);
+
+		MultiThread_03 th = new MultiThread_03(input);
+		th.start();//스레드 실행
+		
+		int score = Integer.parseInt(JOptionPane.showInputDialog("점수를 입력하세요."));
+		System.out.println("입력 점수: " + score);
+	}
+
+}
