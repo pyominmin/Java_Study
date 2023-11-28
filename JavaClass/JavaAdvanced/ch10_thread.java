@@ -390,3 +390,84 @@ public class _10_Interrupt {
 
 }
 
+10.YieldThread
+
+class YieldThread extends Thread{
+	@Override
+	public void run() {
+		for(int i = 0; i < 10; i++) {
+			System.out.println(getName() + ": " + i);
+			
+			if(i % 3 == 0)
+			yield();//다음 스레드에게 제어권을 넘김
+			
+		}
+	}
+}
+
+public class _11_YieldThread {
+
+	public static void main(String[] args) {
+		YieldThread t1 = new YieldThread();
+		YieldThread t2 = new YieldThread();
+
+		t1.setName("양보하는 스레드 1");
+		t2.setName("양보하는 스레드 2");
+		
+		t1.start();
+		t2.start();
+	}
+
+}
+
+11. JoinThread
+
+
+class JoinThread extends Thread{
+	private String name;
+	
+	JoinThread(String name){
+		this.name = name;
+	}
+	
+	@Override
+		public void run() {
+		for(int i = 1; i <= 10; i++) {
+			System.out.println(this.name + ": " + i);
+			try {
+				sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+public class _12_JoinThread {
+
+	public static void main(String[] args) {
+		JoinThread t1 = new JoinThread("조인 스레드 1");
+		JoinThread t2 = new JoinThread("조인 스레드 2");
+
+		t1.start();
+		t2.start();
+		
+		try {
+			t1.join();//t1이 모든 작업을 수행할 때까지 기다린다.
+			t2.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		
+//		t2.start();
+//		try {
+//			t2.join();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+		
+		System.out.println("난 main 메서드를 처리하는 스레드야");
+	}
+
+}
