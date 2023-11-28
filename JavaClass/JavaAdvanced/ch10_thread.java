@@ -240,3 +240,42 @@ public class _07_MultiThread {
 	}
 
 }
+
+7.
+	
+import javax.swing.JOptionPane;
+
+class MultiThread_04 extends Thread{	
+	public void run() {
+		for(int i = 0; i <=100; i++) {
+			System.out.println(i);
+			try {
+				sleep(1000);//100ms마다 출력
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+}
+
+public class _08_MultiThread {
+
+	public static void main(String[] args) {
+		//스레드 시작		
+		MultiThread_04 th = new MultiThread_04();
+		th.start();
+
+		//다이얼로그 상자에 입력 받아 출력
+		String name = JOptionPane.showInputDialog("이름을 입력하세요.");
+		System.out.println("이름 : " + name);
+		
+		int age =  Integer.parseInt(JOptionPane.showInputDialog("나이를 입력하세요."));
+		System.out.println("나이 : " + age);
+		
+		String gender = JOptionPane.showInputDialog("성별을 입력하세요.");
+		System.out.println("성별 : " + gender);
+
+	}
+
+}
