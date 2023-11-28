@@ -319,3 +319,74 @@ public class _09_OddNumberThread {
 	}
 
 }
+
+9.InterruptThread
+
+
+//class InterruptThread extends Thread{
+//	@Override
+//	public void run() {
+//		for(int i = 100; i >= 0; i--) {
+//			System.out.println(i);
+//			
+//			if(isInterrupted()) {//interrupt 요청이 들어오면 -> true로 변환
+//				System.out.println("스레드 취소 요청(Interrupt)으로 스레드 중단");
+//				return;//메서드 종료
+//			}
+//		}
+//	}
+//}
+//
+//public class _10_Interrupt {
+//
+//	public static void main(String[] args) {
+//		InterruptThread t1 = new InterruptThread();//인스턴스 생성
+//		t1.start(); //스레드가 실행 -> run메서드 호출 -> run 메서드는 스레드에서 실행될 구문을 정의
+//		
+//		for(int i = 0; i < 500000; i++) {
+//			if(i == 100000) {
+//				t1.interrupt();//스레드의 작업 취소 요청 -> isInterrupt메서드는 false에서 true로 변환
+//			}
+//		}
+//		
+//		//System.out.println("스레드 상태 변환: " + t1.isInterrupted());
+//	}
+//
+//}
+
+package chap33_thread;
+
+import javax.swing.JOptionPane;
+
+class InterruptThread extends Thread{
+	@Override
+	public void run() {
+		for(int i = 100; i >= 0; i--) {
+			System.out.println(i);
+			
+			if(isInterrupted()) {//interrupt 요청이 들어오면 -> true로 변환
+				System.out.println("스레드 취소 요청(Interrupt)으로 스레드 중단");
+				return;//메서드 종료
+			}
+		}
+	}
+}
+
+public class _10_Interrupt {
+
+	public static void main(String[] args) {
+		InterruptThread t1 = new InterruptThread();//인스턴스 생성
+		
+		String isStop = JOptionPane.showInputDialog("스레드를 중지하려면 stop를 입력하세요: ");
+		if(isStop.equalsIgnoreCase("stop")) {
+			t1.interrupt();//스레드 취소 요청
+		}
+		
+		//다이얼로그박스를 띄어서 문자열을 입력 받는다.
+		//입력 받은 문자열이 stop이라면 interrupt를 발생
+			
+		t1.start(); //스레드가 실행 -> run메서드 호출 -> run 메서드는 스레드에서 실행될 구문을 정의
+	}
+
+}
+
