@@ -1,1 +1,127 @@
 
+//프로그램(program) : 명령어의 집합
+//프로세스(process) : 실행중인 프로그램 => 메모리할당 받는다.
+					//자원 + 스레드(한 개 이상)
+//멀티프로세싱(Multi processing)
+//멀티태스킹(Multi tasking) : 마치 모든 프로그램이 동시에 실행되는 것처럼 사용할 수 있다.
+//스레드(Thread) : 프로세스내에서 동시에 여러 작업을 수행할 수 있다.
+				//할당받은 자원을 이용해서 실제 작업을 수행한다.
+//다중스레드(Multi Thread) : 스레드가 2개 이상 존재하는 경우를 말하며 프로그램의 성능을 향상시킬 수 있다.
+
+
+class MyThread extends Thread{
+	//Thread 클래스의 run 메소드 Override
+	//스레드가 실행됐을 때 수행되는 작업을 run메서드에 정의한다.
+	public void run() {
+		for(int i = 0; i < 5; i++) {
+			System.out.println(getName() + "value = " + i);//getName - 스레드 이름 : [Thread - 번호]
+		}
+	}
+}
+public class _01_MyThread {
+
+	public static void main(String[] args) {
+		MyThread t1 = new MyThread();
+		MyThread t2 = new MyThread();
+		
+		t1.start();//스레드 생성 => start 메서드내에서 run 메서드 호출
+		t2.start();
+	}
+
+}
+
+
+1. runnable
+
+class MyRunnable implements Runnable {// Runnable 구현
+	public void run() {
+		for(int i = 0; i < 5; i++) {
+			// Thread.currentThread() => 현재 실행중인 스레드의 주소를 리턴
+								//클래스명.static메서드 => Thread의 멤버를 가져다 쓰고 싶은 경우 
+			System.out.println(Thread.currentThread().getName());
+			try {
+				Thread.sleep(1000);//실습을 위해 1초씩 느리게 만든다.
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+public class _02_MyRunnable {
+
+	public static void main(String[] args) {
+		MyRunnable r1 = new MyRunnable();
+		Thread t1 = new Thread(r1);
+
+		MyRunnable r2 = new MyRunnable();
+		Thread t2 = new Thread(r2);
+		
+		t1.start();
+		t2.start();
+	}
+
+}
+
+2.SingleThread
+
+public class _03_SingleThread {
+
+	public static void main(String[] args) {
+		long startTime = System.currentTimeMillis();
+		
+		for(int i = 0; i < 1000; i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+		long endTime = System.currentTimeMillis();
+		
+		System.out.println("실행시간 : " + (endTime - startTime));
+		
+		for(int i = 0; i < 1000; i++) {
+			System.out.print("|");
+		}
+		System.out.println();
+		
+		System.out.println("실행시간 : " + (System.currentTimeMillis() - startTime));
+	}
+
+}
+
+3. MultiThread
+
+class MultiThread extends Thread{
+	@Override
+	public void run() {//실제 수행 작업
+		for(int i = 0; i < 1000; i++) {
+			System.out.print("|");
+		}
+		System.out.println();
+		
+		System.out.println("실행시간 : " + (System.currentTimeMillis() - _04_MultiThread.startTime));
+	}
+}
+
+public class _04_MultiThread {
+	
+	//정적변수 : 인스턴스 생성 없이 클래스명으로 접근 가능
+	static long startTime;
+	
+	public static void main(String[] args) {
+		startTime = System.currentTimeMillis();
+		
+		MultiThread m1 = new MultiThread();
+		m1.start(); //스레드 생성 => start메서드 내에서 run메서드 호출
+		
+		for(int i = 0; i < 1000; i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+		long endTime = System.currentTimeMillis();
+		
+		System.out.println("실행시간 : " + (endTime - startTime));
+		
+	}
+
+}
