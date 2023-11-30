@@ -1,3 +1,95 @@
+1. 프로세스 (Process):
+
+프로세스란 실행 중인 프로그램의 인스턴스다. 프로그램을 실행하면 OS로부터 자원(메모리)을 할당 받아 프로세스가 된다. 각각의 프로세스는 독립적으로 실행되며, 각자의 메모리 공간을 가지고 있다. 프로세스는 자원과 스레드(Thread)로 구성 되는데 이때 스레드는 프로세스의 자원을 이용해서 실제 작업을 수행하는 역할을 한다. 따라서 모든 프로세스는 반드시 한 개 이상의 스레드를 갖고 있다. 
+
+​
+
+2. 멀티 프로세스 (Multiprocessing):
+
+멀티 프로세싱은 여러 개의 프로세스가 동시에 실행되는 것을 의미한다. 각 프로세스는 독립적으로 실행되기 때문에 여러 작업을 병렬로 처리할 수 있다.
+
+​
+
+3. 멀티태스킹 (Multitasking):
+
+멀티태스킹은 단일 시스템에서 여러 작업이 동시에 실행되는 것을 의미한다. 시분할 시스템에서 여러 작업들이 번갈아가면서 실행되는 것을 말한다. 예를 들면, 사용자가 웹 셔핑을 하면서 음악 듣고, 이메일 확인 할 수 있다.
+
+​
+
+4. 스레드 (Thread):
+
+스레드는 프로세스 내에서 실행되는 작은 실행 단위를 말한다. 하나의 프로세스 내에서 여러 개의 스레드가 동시에 실행될 수 있다. 예를 들면, 워드 프로세서 작업 시 문서의 철자 검사를 하면서 이미지나 표, 텍스트를 편집할 수 있다. 
+
+​
+
+5. 멀티스레딩 (Multithreading):
+
+멀티스레딩은 하나의 프로세스 내에서 여러 스레드가 동시에 실행되는 것을 말한다. 스레드 간에는 메모리를 공유하므로 데이터 공유와 통신이 더 쉽다. 예를 들면, 웹 브라우저에서 페이지를 로드하는 동안, 별도의 스레드에서 이미지를 미리 다운로드하여 화면에 표시하는 것. 이로써 사용자는 페이지를 볼 때 이미지가 더 빨리 표시될 수 있다.
+
+​
+
+6. 멀티프로그래밍 (Multiprogramming):
+
+멀티프로그래밍은 메모리에 여러 개의 프로그램이 동시에 적재되어, CPU가 어떤 프로그램을 실행할지를 결정하는 시스템이다. 이는 CPU의 사용 효율을 높이는 데 도움이 된다.
+
+​
+
+
+스레드는 아래와 같은 예를 들어 설명할 수 있다.
+
+​
+
+1. 일꾼 (Worker):
+
+스레드는 하나의 큰 작업을 여러 작은 작업으로 나누어 처리하는 일꾼으로 비유할 수 있다. 여러 명의 일꾼이 동시에 다양한 작업을 수행하면 전체 작업이 빠르게 완료될 수 있다.
+
+​
+
+2. 스포츠 팀의 선수들:
+
+각 스레드는 하나의 선수로 생각할 수 있다. 여러 선수들이 팀을 이루어 각자의 역할을 수행하면서 전체 경기를 완성하는 것과 같다.
+
+​
+
+3. 주방에서의 조리자들:
+
+주방에서 각 조리자가 특정 요리를 담당하는 것을 생각해볼 수 있다. 각 스레드는 특정 작업을 담당하면서 전체 요리가 준비되도록 하는 구조와 같다.
+
+​
+
+4. 작업 단위 (Task Unit):
+
+스레드는 어떤 큰 작업을 수행하는 과정에서 각각의 작은 작업 단위로 비유할 수 있습니다. 마치 여러 명의 작업자들이 한 프로젝트를 완성하기 위해 각자의 역할을 수행하는 것과 같다.
+
+
+
+멀티 스레딩에서 주의할 점과 해결 방안은 아래와 같다.
+
+​
+
+1. 교착상태 (Deadlock):
+
+- 주의점: 교착상태는 두 개 이상의 스레드가 서로 상대방의 작업이 끝날 때까지 대기하고 있는 상태를 말한다.
+
+- 해결 방법: 교착상태를 방지하기 위해 스레드가 자원을 요청할 때, 다른 스레드가 이미 가지고 있는 자원을 반납하도록 하는 데에 중점을 둔다. 또한, 자원에 대한 순서를 정의하여 교착상태의 가능성을 줄일 수 있다.
+
+​
+
+2. 경쟁 조건 (Race Condition):
+
+- 주의점: 여러 스레드가 공유 자원에 접근할 때, 예상치 못한 결과가 발생하는 상황을 말한다.
+
+- 해결 방법: 동기화 메커니즘을 사용하여 공유 자원에 대한 접근을 조절한다. synchronized 키워드를 사용하거나 Lock 인터페이스를 활용하여 스레드 간의 순차적인 실행을 보장할 수 있다.
+
+​
+
+3. 데드락 (Livelock):
+
+- 주의점: 데드락은 두 개 이상의 스레드가 서로에게 필요한 자원을 가지고 있지만, 진행이 멈춘 상태를 말한다.
+
+- 해결 방법: 자원을 할당할 때, 스레드가 어떤 자원을 기다릴지 미리 정의하고, 모든 스레드가 동일한 순서로 자원을 요청하도록 한다.
+
+
 
 //프로그램(program) : 명령어의 집합
 //프로세스(process) : 실행중인 프로그램 => 메모리할당 받는다.
@@ -468,143 +560,6 @@ public class _12_JoinThread {
 //		}
 		
 		System.out.println("난 main 메서드를 처리하는 스레드야");
-	}
-
-}
-
-12. synchronized
-
-
-//경쟁조건(Race condition) : 두 개의 스레드가 동시에 자원을 접근하면서 발생하는 문제
-//이 경우 원치 않은 결과를 얻을 수 있다.
-
-class ShareResource{
-	private int count = 0;
-	
-	//synchronized //메서드에 대한 임계영역(critical section) - lock 획득
-	public synchronized void increment() {
-		count++;
-		//Load count toR1
-		//R1 = R1 + 1
-		//Store R1 to count
-	}//lock반납
-	
-	public int getCount() {
-		return count;
-	}
-}
-//--------------------------------------------------------//Thread클래스
-class IncrementThread extends Thread{
-	
-	private ShareResource shRsc;//참조형 변수 선언 
-	
-	public IncrementThread(ShareResource sRsc){
-		shRsc = sRsc;
-	}
-	
-	@Override
-	public void run() {
-		for(int i = 0; i < 10000; i++) {
-			shRsc.increment();
-		}
-	}
-}
-
-public class _13_RaceCondition {
-
-	public static void main(String[] args) {
-		ShareResource sr = new ShareResource();//인스턴스 생성
-		IncrementThread t1 = new IncrementThread(sr);//인스턴스 생성
-		IncrementThread t2 = new IncrementThread(sr);//인스턴스 생성
-		
-		t1.start();
-		t2.start();
-		
-		try {
-			t1.join();
-			t2.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println("증가된 횟수: " + sr.getCount());
-	}
-
-}
-
-
-13. synchronized
-
-
-class BankAccount {
-	private int balance;// 잔액
-
-	public BankAccount(int amount) {
-		balance += amount;
-	}
-
-	public synchronized void withdraw(int amount) {
-		if (balance >= amount) {
-			balance -= amount;
-			System.out.println(amount + "원 출금, 남은 잔액 : " + balance + "원");	
-		} else {
-			System.out.println("잔액이 부족하여 출금할 수 없습니다.");
-		}
-
-	}
-	
-	public synchronized void sendDeposit(int deposit) {
-		int totalMoney;
-		totalMoney = balance += deposit;
-		System.out.println(deposit + "원 입금, 남은 잔액 : " + totalMoney + "원");
-	}
-
-}
-//-------------------------------------------------------------------//
-class WithdrawThread extends Thread{
-	private BankAccount ac;//계좌 참조형 변수
-	private int amount;//출금 금액
-	
-	public WithdrawThread(BankAccount acc, int money) {
-		ac = acc;
-		amount = money;
-	}
-	@Override
-	public void run() {
-		ac.withdraw(amount);
-	}
-}
-
-class sendDeposit extends Thread{
-	private BankAccount account;
-	private int deposit;
-	
-	public sendDeposit(BankAccount account, int deposit) {
-		this.account = account;
-		this.deposit = deposit;
-	}
-	
-	@Override
-	public void run() {
-		account.sendDeposit(deposit);
-	}
-}
-
-public class _14_SynchronizedBank {
-
-	public static void main(String[] args) {
-		BankAccount bank = new BankAccount(1000);//인스턴스 생성
-		WithdrawThread th1 = new WithdrawThread(bank, 500);//인스턴스 생성
-		WithdrawThread th2 = new WithdrawThread(bank, 800);//인스턴스 생성
-		
-		th1.start();
-		th2.start();
-
-		sendDeposit sd1 = new sendDeposit(bank, 1000);
-		sendDeposit sd2 = new sendDeposit(bank, 1000);
-		
-		sd1.start();
-		sd2.start();
 	}
 
 }
