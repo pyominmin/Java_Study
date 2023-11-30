@@ -531,3 +531,80 @@ public class _13_RaceCondition {
 	}
 
 }
+
+
+13. synchronized
+
+
+class BankAccount {
+	private int balance;// 잔액
+
+	public BankAccount(int amount) {
+		balance += amount;
+	}
+
+	public synchronized void withdraw(int amount) {
+		if (balance >= amount) {
+			balance -= amount;
+			System.out.println(amount + "원 출금, 남은 잔액 : " + balance + "원");	
+		} else {
+			System.out.println("잔액이 부족하여 출금할 수 없습니다.");
+		}
+
+	}
+	
+	public synchronized void sendDeposit(int deposit) {
+		int totalMoney;
+		totalMoney = balance += deposit;
+		System.out.println(deposit + "원 입금, 남은 잔액 : " + totalMoney + "원");
+	}
+
+}
+//-------------------------------------------------------------------//
+class WithdrawThread extends Thread{
+	private BankAccount ac;//계좌 참조형 변수
+	private int amount;//출금 금액
+	
+	public WithdrawThread(BankAccount acc, int money) {
+		ac = acc;
+		amount = money;
+	}
+	@Override
+	public void run() {
+		ac.withdraw(amount);
+	}
+}
+
+class sendDeposit extends Thread{
+	private BankAccount account;
+	private int deposit;
+	
+	public sendDeposit(BankAccount account, int deposit) {
+		this.account = account;
+		this.deposit = deposit;
+	}
+	
+	@Override
+	public void run() {
+		account.sendDeposit(deposit);
+	}
+}
+
+public class _14_SynchronizedBank {
+
+	public static void main(String[] args) {
+		BankAccount bank = new BankAccount(1000);//인스턴스 생성
+		WithdrawThread th1 = new WithdrawThread(bank, 500);//인스턴스 생성
+		WithdrawThread th2 = new WithdrawThread(bank, 800);//인스턴스 생성
+		
+		th1.start();
+		th2.start();
+
+		sendDeposit sd1 = new sendDeposit(bank, 1000);
+		sendDeposit sd2 = new sendDeposit(bank, 1000);
+		
+		sd1.start();
+		sd2.start();
+	}
+
+}
