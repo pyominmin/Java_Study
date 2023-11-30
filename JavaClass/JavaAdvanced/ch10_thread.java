@@ -472,4 +472,62 @@ public class _12_JoinThread {
 
 }
 
-12. 
+12. synchronized
+
+
+//경쟁조건(Race condition) : 두 개의 스레드가 동시에 자원을 접근하면서 발생하는 문제
+//이 경우 원치 않은 결과를 얻을 수 있다.
+
+class ShareResource{
+	private int count = 0;
+	
+	//synchronized //메서드에 대한 임계영역(critical section) - lock 획득
+	public synchronized void increment() {
+		count++;
+		//Load count toR1
+		//R1 = R1 + 1
+		//Store R1 to count
+	}//lock반납
+	
+	public int getCount() {
+		return count;
+	}
+}
+//--------------------------------------------------------//Thread클래스
+class IncrementThread extends Thread{
+	
+	private ShareResource shRsc;//참조형 변수 선언 
+	
+	public IncrementThread(ShareResource sRsc){
+		shRsc = sRsc;
+	}
+	
+	@Override
+	public void run() {
+		for(int i = 0; i < 10000; i++) {
+			shRsc.increment();
+		}
+	}
+}
+
+public class _13_RaceCondition {
+
+	public static void main(String[] args) {
+		ShareResource sr = new ShareResource();//인스턴스 생성
+		IncrementThread t1 = new IncrementThread(sr);//인스턴스 생성
+		IncrementThread t2 = new IncrementThread(sr);//인스턴스 생성
+		
+		t1.start();
+		t2.start();
+		
+		try {
+			t1.join();
+			t2.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("증가된 횟수: " + sr.getCount());
+	}
+
+}
