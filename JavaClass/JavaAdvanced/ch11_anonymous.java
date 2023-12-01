@@ -162,3 +162,78 @@ public class _04_Anonymous {
 	}
 
 }
+
+
+5. 익명클래스
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class H1 {
+
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("익명 클래스 테스트");
+		JButton button = new JButton("Click me!");
+		ActionListener ac = new ActionListener() {
+
+			int count = 0;
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				count++;
+				System.out.println("Click count: " + count );
+				
+			}
+			
+		};
+		
+		button.addActionListener(ac);
+		
+		frame.setSize(300, 200);
+		frame.getContentPane().add(button);
+		frame.setVisible(true);
+		
+	}
+
+}
+
+
+6. 익명클래스 
+
+interface Calculator {
+    int calculate(int a, int b);
+}
+
+public class H2 {
+
+	public static void main(String[] args) {
+		Calculator add = new Calculator() {
+
+			int sum;
+			@Override
+			public int calculate(int a, int b) {
+				sum = a + b;
+				return sum;
+			}
+			
+		};
+		
+		Calculator subtract = new Calculator() {
+
+			int sub;
+			@Override
+			public int calculate(int a, int b) {
+				sub = a - b;
+				return sub;
+			}
+			
+		};
+
+		System.out.println("덧셈 결과: " + add.calculate(5, 3));
+		System.out.println("뺄셈 결과: " + subtract.calculate(8, 2));
+		
+	}
+
+}
