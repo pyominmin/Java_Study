@@ -195,6 +195,7 @@ public class _09_Lambda {
 		
 		//Dummy.fun();
 		
+		//asList : 배열을 리스트로 변환하는 메서드 : 읽기 전용(추가, 삭제 불가)
 		List<String> langs = Arrays.asList("Java", "Python", "C++", "C#", "JavaScript");
 		List<Integer> nums = Arrays.asList(1,2,3,4,5);
 		//lang.add("JSP"); //error : fixed size
@@ -215,6 +216,7 @@ public class _09_Lambda {
 		System.out.println();
 			
 		//forEach: 요소를 반복하면서 특정 명령을 수행
+		//Collection.forEach(요소를 반복할 변수 -> 수행명령)
 		System.out.print("리스트에서 사용되는 람다 표현식을 이용한 langs 출력: ");
 		langs.forEach(lang -> System.out.print(lang + " "));//langs를 lang로 반복하면서 출력하겠다.
 		
