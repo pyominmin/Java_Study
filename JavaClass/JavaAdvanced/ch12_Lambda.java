@@ -103,3 +103,45 @@ public class _06_Lambda {
 	}
 
 }
+
+2.람다
+//void printChar(char ch, int count) {
+//	for(int i = 0; i < count; i++) {
+//		System.out.println(ch);
+//	}
+//}
+
+	interface CharPrinter{
+		void printChar(char ch, int count);
+	}
+
+	public class _07_Lambda {
+
+		public static void main(String[] args) {
+		
+		CharPrinter p1 = new CharPrinter() {
+
+			@Override
+			public void printChar(char ch, int count) {
+				for(int i = 0; i < count; i++) {
+					System.out.print(ch);
+				}
+				System.out.println();
+			}
+			
+	};
+		System.out.println("익명 클래스를 이용한 방법");	
+		p1.printChar('*', 50);
+		
+		
+		CharPrinter p2 = (char ch, int count) -> {
+			for(int i = 0; i < count; i++){
+				System.out.print(ch);
+		}
+		System.out.println();
+		};
+		System.out.println("람다 표현식을 이용한 방법 : ");
+		p2.printChar('#', 100);
+	}
+
+}
