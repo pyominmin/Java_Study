@@ -1,0 +1,73 @@
+*stream
+
+import java.util.Arrays;
+import java.util.List;
+
+public class _01_Stream {
+
+	public static void main(String[] args) {
+		List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		
+		//리스트에서 짝수를 구해서 각 수를 제곱 한 후, 모두 더한 결과를 구하시오.
+		
+		int sum = nums.stream()	//리스트를 스트림으로 변환 => 스트림을 생성
+			.filter(n -> n % 2 == 0)//결과에 맞는 애들만 추출
+			.map(n -> n * n)//명령 수행 후 요소 반환
+			.reduce(0, (a, b) -> a + b);//.reduce(0, Integer::sum);//스트림의 요소를 한 개씩 줄여 나가면서 연산
+		
+		System.out.println("결과는 " + sum);
+		System.out.println("nums List: " + nums);
+		
+		//리스트에서 홀수를 구해서 각 수에 1을 더한 후, 모두 곱한 결과를 구하시오.
+		
+		int num = nums.stream()
+				.filter(n1 -> n1 % 2 != 0)
+				.map(n1 -> n1 + 1)
+				.reduce(1, (a, b) -> a * b);
+		
+		System.out.println("결과는" + num);
+		System.out.println("nums List: " + nums);
+	}
+
+}
+
+1. stream
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class _02_Stream {
+
+	public static void main(String[] args) {
+		List<String> words = Arrays.asList("culture", "conscience", "cat", "dog", "lionking");
+
+		//문자열 리스트에서 길이가 6이상인 단어만 대문자로 변환해서 새로운 리스트 생성
+		List<String> filterWord = words.stream().filter(word -> word.length() >= 6).map(String::toUpperCase).collect(Collectors.toList());
+				//스트림 생성.길이가 6이상 필터링.대문자로 변환.스트림의 요소를 리스트에 담아 리턴
+		
+		System.out.println("결과: " + filterWord);
+	}
+
+}
+
+2.stream
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class _03_Stream {
+
+	public static void main(String[] args) {
+		List<Integer> nums = Arrays.asList(5, 3, 7, 2, 4, 8, 1, 6, 9, 10);
+
+		//정렬 후 새로운 리스트에 담기
+		List<Integer> sortNums = nums.stream().sorted().collect(Collectors.toList());//정렬 후 리스트에 담는다
+		
+		System.out.println("Original List" + nums);
+		System.out.println("Sorted List " + sortNums);
+	}
+
+}
+
