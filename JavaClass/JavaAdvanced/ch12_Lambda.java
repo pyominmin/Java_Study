@@ -175,3 +175,52 @@ public class _08_Lambda {
 	}
 
 }
+
+4.람다
+
+import java.util.Arrays;
+import java.util.List;
+
+//class Dummy{
+	//static void fun() {//void fun() {
+		//System.out.println("안녕!!");
+	//}
+//}
+
+public class _09_Lambda {
+
+	public static void main(String[] args) {
+		//Dummy d1 = new Dummy();
+		//d1.fun();
+		
+		//Dummy.fun();
+		
+		List<String> langs = Arrays.asList("Java", "Python", "C++", "C#", "JavaScript");
+		List<Integer> nums = Arrays.asList(1,2,3,4,5);
+		//lang.add("JSP"); //error : fixed size
+		
+		System.out.println(langs);
+		System.out.println(nums);
+		
+		System.out.println("foreach를 이용한 출력: ");
+		for(String lang : langs) {
+			System.out.print(lang + " ");
+		}
+		System.out.println();
+		
+		System.out.println("foreach를 이용한 출력: ");
+		for(int num : nums) {//num 에 nums만큼 출력하겠다.
+			System.out.print(num + " ");
+		}
+		System.out.println();
+			
+		//forEach: 요소를 반복하면서 특정 명령을 수행
+		System.out.print("리스트에서 사용되는 람다 표현식을 이용한 langs 출력: ");
+		langs.forEach(lang -> System.out.print(lang + " "));//langs를 lang로 반복하면서 출력하겠다.
+		
+		System.out.println();
+		
+		System.out.print("리스트에서 사용되는 람다 표현식을 이용한 nums 출력: ");
+		nums.forEach(num -> System.out.print(num + " "));
+		}
+	}
