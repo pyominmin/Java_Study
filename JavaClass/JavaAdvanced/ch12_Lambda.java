@@ -145,3 +145,33 @@ public class _06_Lambda {
 	}
 
 }
+
+3.람다
+
+interface StringPrint {
+	void printf(String s);
+	
+}
+
+public class _08_Lambda {
+
+	public static void main(String[] args) {
+		StringPrint pf1 = new StringPrint() {
+			
+			@Override
+			public void printf(String s) {
+				System.out.println(s);
+			}
+			
+		};
+		System.out.print("익명 클래스를 이용한 방법: ");
+		pf1.printf("Anonymous: Old Way");
+		
+		StringPrint pf2 = (String s) -> {
+			System.out.println(s);
+		};
+		System.out.print("람다 표현식을 이용한 방법: ");
+		pf2.printf("Lambda Way");
+	}
+
+}
