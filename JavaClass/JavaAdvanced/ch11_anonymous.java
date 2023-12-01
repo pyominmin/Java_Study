@@ -103,3 +103,62 @@ public class _02_Anonymous {
 }
 
 3. 익명클래스
+
+public class _03_Anonymous {
+
+	public static void main(String[] args) {
+		//Runnable를 상속받는 클래스 : 익명클래스
+		Runnable r = new Runnable() {
+
+			@Override
+			public void run() {
+				for(int i = 0; i < 10; i++) {
+					System.out.println(Thread.currentThread().getName() + " : " + i);
+				}
+				
+			}
+			
+		};
+		Thread th1 = new Thread(r);
+		Thread th2 = new Thread(r);
+		
+		th1.start();
+		th2.start();
+
+	}
+
+}
+
+
+4. 익명클래스
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class _04_Anonymous {
+
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("익명 클래스 테스트");
+		JButton button = new JButton("Click me!");
+		
+		//ActionListener를 상속받는 클래스 : 익명클래스
+		ActionListener ac = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("버튼을 클릭했습니다.");
+			}
+			
+		};
+		
+		button.addActionListener(ac);
+		
+		frame.setSize(300, 300);
+		frame.getContentPane().add(button);
+		frame.setVisible(true);
+	}
+
+}
