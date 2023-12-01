@@ -135,3 +135,98 @@ public class _14_SynchronizedBank {
 
 }
 
+3. synchronized
+
+//--------------------------------------------------------//Chat클래스
+class Chat{
+	private String message;
+	private boolean isMessage;//메시지 수신 여부
+	
+	//동기화 : 한 스레드가 사용중이면 다른 스레드는 사용할 수 없도록 만드는 작업.
+	public synchronized void sendMessage(String msg) {
+		
+		if(isMessage) {//isMessage가 true라면?? 메시지를 수신한 상태
+			try {
+				wait();//스레드를 대기 상태로 바꾼다.
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		message = msg;
+		isMessage = true;
+		System.out.println("-> " + message + "메시지 송신");
+		notify();
+	}
+	
+	public synchronized String receiveMessage() {
+		
+		if(!isMessage) {//isMessage가 false라면?
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println("<-" + message + "메시지 수신");
+		isMessage = false;
+		notify();
+		return message;
+	}
+}
+//--------------------------------------------------------//SenderThread클래스//송신으로 가는
+class SenderThread extends Thread {
+	Chat chat = null; // Chat의 참조형 변수 선언
+
+	SenderThread(Chat ct) {// 참조형 변수를 ct 메개변수로 초기화 해준다.
+		chat = ct;
+	}
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 5; i++) {
+			chat.sendMessage("메시지#" + i);// msg로 메시지 전송
+			try {
+				sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+//--------------------------------------------------------//ReceverThread클래스//수신으로 가는
+class ReceiverThread extends Thread {
+	private Chat chat;// 참조형 변수 선언
+
+	public ReceiverThread(Chat ct) {
+		chat = ct;
+	}
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 5; i++) {
+			chat.receiveMessage();
+			try {
+				sleep(1000);
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+public class _15_Chat {
+
+	public static void main(String[] args) {
+		Chat cha = new Chat();//인스턴스 생성
+		SenderThread sendTh = new SenderThread(cha);//인스턴스 생성
+		ReceiverThread revTh = new ReceiverThread(cha);//인스턴스 생성
+		
+		sendTh.start();
+		revTh.start();
+		
+	}
+
+}
