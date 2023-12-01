@@ -135,19 +135,19 @@ public class _14_SynchronizedBank {
 
 }
 
-3. synchronized
+3. synchronized//동기화
 
 //--------------------------------------------------------//Chat클래스
 class Chat{
-	private String message;
-	private boolean isMessage;//메시지 수신 여부
+	private String message = null;
+	private boolean isMessage = false;//메시지 수신 여부//기본값으로 false가 잡혀있다.
 	
 	//동기화 : 한 스레드가 사용중이면 다른 스레드는 사용할 수 없도록 만드는 작업.
 	public synchronized void sendMessage(String msg) {
-		
-		if(isMessage) {//isMessage가 true라면?? 메시지를 수신한 상태
+		//받은게 있으면 대기//멈추는 조건 멈추지 않으면 실행되는 조건
+		if(isMessage) {//isMessage가 true라면?? 메시지를 수신한 상태 //send부터 실행되기 위해 조건을 달아놨다.//isMessage가 true라면 실행
 			try {
-				wait();//스레드를 대기 상태로 바꾼다.
+				wait();//스레드를 대기 상태로 바꾼다. 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -156,14 +156,14 @@ class Chat{
 		message = msg;
 		isMessage = true;
 		System.out.println("-> " + message + "메시지 송신");
-		notify();
+		notify();//대기 상태인 스레드를 깨운다
 	}
 	
 	public synchronized String receiveMessage() {
-		
-		if(!isMessage) {//isMessage가 false라면?
+		//받은게 없으면 대기
+		if(!isMessage) {//isMessage가 false라면?// false라면 무조건 대기
 			try {
-				wait();
+				wait();//스레드를 대기 상태로 바꾼다.
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -171,7 +171,7 @@ class Chat{
 		
 		System.out.println("<-" + message + "메시지 수신");
 		isMessage = false;
-		notify();
+		notify();//대기 상태인 스레드를 깨운다
 		return message;
 	}
 }
