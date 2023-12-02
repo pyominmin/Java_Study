@@ -108,3 +108,30 @@ public class H2 {
 	}
 
 }
+
+5.stream
+
+import java.util.Arrays;
+
+public class _04_Stream {
+
+	public static void main(String[] args) {
+		int[] nums = {3, 6, 1,  4, 5, 5, 3, 2, 1, 8, 9, 9, 4, 7, 5, 2};
+
+					//배열.스트림 생성(num배열).중복제거 .홀수 필터 .3개 뽑아낸다 .새로운 배열 만들기
+		int[] arr = Arrays.stream(nums).distinct().filter(n -> n % 2 != 0).limit(3).toArray();
+		
+		//배열을 정렬해서 새로운 배열로 저장
+		int[] ar = Arrays.stream(nums).sorted().toArray();
+		
+		Arrays.stream(nums).sorted().forEach(System.out::print);//호출// 자바가 알아서 처리하게 :: 후 메서드 이름만 사용//메서드 레퍼런스
+		System.out.println();
+		Arrays.stream(nums).sorted().forEach(n -> System.out.print(n + " "));//람다 식 사용
+		System.out.println();
+		
+		System.out.println("Original Array " + Arrays.toString(nums));
+		System.out.println("Operation Array " + Arrays.toString(arr));
+		System.out.println("Sorted Array " + Arrays.toString(ar));
+	}
+
+}
