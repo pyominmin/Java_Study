@@ -1,0 +1,95 @@
+*호스트 : 각각의 컴퓨터(장치)//서버(데이터 제공)가 될 수 있고 클라이언트(데이터를 요청)가 될 수 있다.
+*IP : IP 주소(인터넷 프로토콜 주소)는 컴퓨터 네트워크 상에서 각각의 장치(호스트, host)를 식별하기 위한 고유한 숫자를 말한다. IPv4는 32비트 주소체계이고, IPv6는 128비트 주소체계다. 
+
+1. network
+  
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class _01_InetAdress {
+
+	public static void main(String[] args) {
+		try {
+			InetAddress adr = InetAddress.getByName("www.naver.com");//도메인명으로 얻어오기
+		
+			System.out.println("HostName: " + adr.getHostName());
+			System.out.println("IP Address: " + adr.getHostAddress());
+		} catch (UnknownHostException e) { 
+			e.printStackTrace();
+		}
+
+		
+		try {
+			InetAddress adr = InetAddress.getByName("192.168.100.1");//IP주소로 얻어오기
+		
+			System.out.println("HostName: " + adr.getHostName());
+			System.out.println("IP Address: " + adr.getHostAddress());
+		} catch (UnknownHostException e) { 
+			e.printStackTrace();
+		}
+
+		
+	}
+
+}
+
+2. URL
+
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class _02_URL {
+
+	public static void main(String[] args) {
+		try {
+			URL url = new URL("https://docs.oracle.com/javase/8/docs/api/");
+			
+			System.out.println(url.getAuthority());//호스트와 포트를 문자열로 변환
+			System.out.println(url.getDefaultPort());//Http : 80, Https : 443
+			System.out.println(url.getFile());
+			System.out.println(url.getHost());
+			System.out.println(url.getProtocol());//프로토콜 : 통신 규약(통신법)
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+3. URL
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class _03_URL {
+
+	public static void main(String[] args) {
+		try {
+			URL url = new URL("https://docs.oracle.com/javase/8/docs/api/");
+		
+			//openStream : URL과 연결된 InputStream을 연다.
+			InputStreamReader ir = new InputStreamReader(url.openStream());
+			BufferedReader br = new BufferedReader(ir);//성능향상
+			
+			String line;
+			while((line = br.readLine()) != null){//한 행씩 읽어와서 line에 저장
+				System.out.println(line);
+			}
+			
+			br.close();
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
