@@ -93,3 +93,45 @@ public class _03_URL {
 	}
 
 }
+
+* 소켓 프로그래밍(Soket Programming)
+소켓 : 소켓은 네트워크 상에서 프로세스 간 통신을 가능케 하는 엔드포인트(endpoint)를 나타낸다. 소켓은 일종의 통신 도구로 클라이언트와 서버 간의 양방향 통신을 담당한다.
+4. URLConnect
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+public class _04_URLConnect {
+
+	public static void main(String[] args) {
+		try {
+			//URL인스턴스 생성
+			URL url = new URL("https://docs.oracle.com/javase/8/docs/api/");
+			
+			//URLConnection인스턴스 생성 및 url과 연결 설정
+			URLConnection con = url.openConnection();
+			
+			//getInputStream : URLConnection과 연결된 InputStream을 연다.
+			InputStreamReader ir = new InputStreamReader(con.getInputStream());
+			BufferedReader br = new BufferedReader(ir);//성능향상
+			
+			String line;
+			while((line = br.readLine()) != null){//한 행씩 읽어와서 line에 저장
+				System.out.println(line);
+			}
+			
+			br.close();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
