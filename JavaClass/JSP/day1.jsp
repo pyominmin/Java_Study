@@ -56,3 +56,61 @@ ex) 아이디, 학번 등
 
 //-----------------------------------------------------------------------------------------------------------------------------ORACLE//
 
+
+CREATE TABLE MEMBER2(
+
+    ID VARCHAR2(50) PRIMARY KEY,--무결성 제약조건(유일한 키)
+    PW VARCHAR2(50) NOT NULL,
+    NAME NVARCHAR2(50) NOT NULL,
+    AGE NUMBER(3),
+    EMAIL VARCHAR(100) --기본 디폴트값 NULL
+
+);
+
+-- 해당하는 제이터 상의 모든 테이블 목록 출력
+SELECT * FROM TAB;
+
+--데이터 저장하기
+-- INSERT INTO [테이블명] (컬럼명1, 컬럼명2,...) VALUES (데이터1, 데이터2, ...);
+-- 오라클 데이터베이스의 문자컬럼의 값은 작은 따옴표이다.
+INSERT INTO member2(ID, PW, NAME, AGE, EMAIL)VALUES('HONG', '1234', '홍길동', '22', 'HHHH@GMAIL.COM');
+INSERT INTO member2(ID, PW, NAME, AGE, EMAIL)VALUES('PARK', '1111', '박길동', '20', 'PPPP@GMAIL.COM');
+INSERT INTO member2(ID, PW, NAME, AGE, EMAIL)VALUES('KIM', '1222', '김길동', '21', 'KKKK@GMAIL.COM');
+INSERT INTO member2(ID, PW, NAME, AGE, EMAIL)VALUES('LEE', '3333', '이길동', '24', 'LLLL@GMAIL.COM');
+
+ROLLBACK;
+COMMIT; --최종적용
+
+--데이터 전체 조회하기
+SELECT * FROM MEMBER2;
+
+--조건에 맞게 조회하기
+-- SELECT [컬럼명1, 컬럼명2, ...] FROM [테이블명] WHERE [조건]
+
+SELECT ID, PW FROM MEMBER2 WHERE NAME = '홍길동';
+
+--데이터 수정하기
+-- UPDATE [테이블명] SET [수정할컬럼] = [수정할 값] WHERE [조건]
+
+UPDATE member2 SET PW = '5678' WHERE ID = 'KIM';
+
+ROLLBACK;--커밋 전에 해야 함
+COMMIT;
+
+--데이터 전체 조회하기
+SELECT * FROM MEMBER2;
+
+--데이터 삭제하기
+--DELETE FROM [테이블명] WHERE [조건]
+
+DELETE FROM MEMBER2 WHERE NAME = '홍길동';
+
+COMMIT;
+
+--데이터 전체 조회하기
+SELECT * FROM MEMBER2;
+
+--DROP : 테이블 객체를 삭제
+--DROP TABLE [테이블명]
+
+DROP TABLE MEMBER;
