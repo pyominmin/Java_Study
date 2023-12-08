@@ -216,3 +216,12 @@ COMMIT;
 //------------------------------------------------------------------------------------기타연산자(오라클에서만 쓰이는 연산자//
 
 
+--기타연산자(오라클에서만 쓰이는 연산자)
+-- BETWEEN ~ AND : 특정 범위에 포함되는지 여부 : >= AND <=
+SELECT * FROM STUDENT WHERE GRADE BETWEEN 2 AND 3;
+
+-- IN : 비교값 목록에는 포함되는지 여부 (OR이 여러개일 경우에 대체하는 연산자)
+SELECT * FROM STUDENT WHERE GRADE IN(2,3,4);
+
+--NOT IN : 비교값 목록에 비포함되는지 여부
+SELECT * FROM STUDENT WHERE GRADE NOT IN (2,3,4);
