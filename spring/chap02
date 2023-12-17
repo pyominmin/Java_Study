@@ -1,0 +1,84 @@
+http://localhost:8090/ch2/hello 접속
+
+package com.fastcampus.ch2;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+//1.원격 호출 가능한 프로그램으로 등록
+@Controller
+public class Hello {
+	int iv = 10;//인스턴스 변수
+	static int cv = 20;//static 변수
+	
+	
+	//2. URL과 메서드를 연결
+	@RequestMapping("/hello")
+	public void main() {//인스턴스 메서드 - iv, cv 둘다 사용 가능
+		System.out.println("Hello");
+		System.out.println(cv);//OK
+		System.out.println(iv);//OK
+		
+	}
+	public static void main2() {//static 메서드 - cv만 사용가능
+		System.out.println(cv);//OK
+		//System.out.println(iv);//error
+	}
+	
+}
+
+**Reflection API
+
+package com.fastcampus.ch2;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+public class Main {
+
+	public static void main(String[] args) {
+//		Hello hello = new Hello();
+//		hello.main();// private라서 외부 호출 불가
+		
+		//Reflection API를 사용 - 클래스 정보를 얻고 다룰 수 있는 강력한 기능 제공
+		//java.lang.reflect패키지 제공
+		//Hello클래스의 Class 객체(클래스의 정보를 담고 있는 객체)를 얻어온다.
+		Class helloClass;
+		try {
+			helloClass = Class.forName("com.fastcampus.ch2.Hello");
+			try {
+				Hello hello = (Hello)helloClass.newInstance();//Class 객체가 가진 정보로 객체 생성
+				Method main;
+				try {
+					main = helloClass.getDeclaredMethod("main");
+					main.setAccessible(true);// private인 main()을 호출 가능하게 한다.
+					
+					try {
+						main.invoke(hello);
+					} catch (IllegalArgumentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}// hello.main()
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
