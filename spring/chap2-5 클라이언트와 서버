@@ -6,3 +6,40 @@
 
 HTTP 요청과 응답
 1. HttpServletRequest
+
+String year = request.getParameter("year");
+String month = request.getParameter("month");
+String day = request.getParameter("day");
+
+Enumeration enum = request.getParameterNames();//old ver
+Iterater enum = request.getParameterNames();//new ver
+
+Map paramMap = request.getParameterMap();
+
+?year=2021&year=2022&year=2023
+이름이 같은 경우
+String[]yearArr = request.getParameterValues("year");
+이름이 year인 값들이 String 배열로 받을 수 있다.
+
+클라이언트 : 서비스를 요청하는 애플리케이션
+서버 : 서비스를 제공하는 애플리케이션
+
+클라이언트 app -> 요청 -> 서버 컴퓨터, 서버 애플리케이션 -> 응답 -> 클라이언트 컴퓨터
+(역할에 따른 구분)
+
+2. 서버의 종류
+어떤 서비스를 제공?
+-Email server
+-File server
+-Web server (브라우저로 할 수 있는 서비스)
+
+3. 서버의 포트
+포트번호로 어떤 서버를 이용할 지 구분한다.
+web server -> 보통 80이기 때문에 생략할 수 있다.
+
+4. 웹 애플리케이션 서버(WAS)란?
+웹 애플리케이션 서버(WAS) : 웹 애플리케이션을 서비스하는 서버
+
+웹에서 원격프로그램 호출 -> Web Application Server(Application을 서비스? 서버에 프로그램을 설치하고 클라이언트가 사용할 수 있게 한다.) -> 실행결과 전송
+
+
