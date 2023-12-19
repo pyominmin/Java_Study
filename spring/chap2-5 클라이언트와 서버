@@ -1,0 +1,8 @@
+클라이언트와 서버
+
+저번 강의 내용
+- 브라우저를 이용해서 URL을 입력 후 요청하면 해당 서버에 있는 톰캣이 요청을 받아서 객체에 저장 생성 후 정보를 담는다.
+- 메서드의 매개변수로 제공(HttpServletRequest request)
+
+HTTP 요청과 응답
+1. HttpServletRequest
