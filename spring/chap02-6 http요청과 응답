@@ -22,6 +22,13 @@ HTTP요청과 응답
   7. HTTP 요청과 응답
   텍스트 파일 vs 바이너리 파일
 바이너리 파일: 문자와 숫자가 저장되어있는 파일(data는 숫자와 문자)
+-숫자가 포함되어 있어서 읽기 어렵다.
 텍스트 파일 : 문자만 있는 저장되어 있는 파일
+-장정 읽기 쉽다.
+
+8.MIME(Multipurpose Internet Mail Extensions)
+텍스트 기반 프로토콜에 바이너리 데이터 전송하기 위해 고안 HTTP의 Content-Type헤더에 사용. 데이터의 타입을 명시
+- text, image, audio, video, application
+데이터의 타입을 보여주기 위한.
 
 
