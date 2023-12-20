@@ -31,4 +31,9 @@ HTTP요청과 응답
 - text, image, audio, video, application
 데이터의 타입을 보여주기 위한.
 
+9.Base64
+2진법 - base 2 : 0, 1
+10진법 - base 10 : 0 ~ 9
+64진법 - base 64 : A ~ Z(26), a ~ z(26), 0 ~ 9(10), +, / = 64개
 
+바이너리 데이터를 텍스트 데이터로 변환할 때 사용
